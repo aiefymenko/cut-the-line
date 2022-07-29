@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const FeatureListItems = [
+const SideNavItems = [
   {
     title: "Waitlist",
     icon: <FontAwesomeIcon icon="fa-solid fa-clock" />,
@@ -13,11 +13,11 @@ const FeatureListItems = [
     link: "/settings",
   },
 
-  {
-    title: "History",
-    icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
-    link: "/history",
-  },
+  // {
+  //   title: "History",
+  //   icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
+  //   link: "/history",
+  // },
 ];
 
-export default FeatureListItems;
+export default SideNavItems;
