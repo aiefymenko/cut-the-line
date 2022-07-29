@@ -4,9 +4,25 @@
   align-items: center;
   border-bottom: 4px solid #2f4050;
   background-color: white;
-  padding: 10px;
+  padding: 10px 20px;
 
   img {
     height:70px;
+    width: 15%;
+  }
+
+  h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0;
+    color: #2f4050;
+  }
+
+  button {
+    background-color: #2f4050;
+    border: none;
+  }
+
+  button:hover {
+    background-color: #04AA6D;
   }
 }
