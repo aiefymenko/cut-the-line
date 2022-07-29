@@ -1,12 +1,18 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+
 import Header from "./Header";
-import Article from "./Article";
+import Setting from "./Setting";
+import Waitlist from "./Waitlist";
 
 const FeatureSection = () => {
   return (
     <>
       <Header />
-      <Article />
+      <Routes>
+        <Route path="/settings" element={<Setting />} />
+        <Route path="/waitlist" element={<Waitlist />} />
+      </Routes>
     </>
   );
 };
