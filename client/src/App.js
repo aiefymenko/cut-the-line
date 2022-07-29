@@ -6,12 +6,11 @@ import "./App.scss";
 
 //Font Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faClock, faGear, faUser } from "@fortawesome/free-solid-svg-icons";
-import FeatureListItems from "./components/admin/SideNavItems";
+import { faClock, faGear } from "@fortawesome/free-solid-svg-icons";
 import SideNav from "./components/admin/SideNav";
 import FeatureSection from "./components/admin/FeatureSection";
 
-library.add(faGear, faClock, faUser);
+library.add(faGear, faClock);
 
 function App() {
   return (

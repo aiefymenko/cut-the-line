@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SideNavItems = [
+const SideData = [
   {
     title: "Waitlist",
     icon: <FontAwesomeIcon icon="fa-solid fa-clock" />,
@@ -20,4 +20,4 @@ const SideNavItems = [
   // },
 ];
 
-export default SideNavItems;
+export default SideData;
