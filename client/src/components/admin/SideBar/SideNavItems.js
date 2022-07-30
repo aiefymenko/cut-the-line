@@ -1,12 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import SideData from "./SideData";
+import SideNavData from "./SideNavData";
 import "./SideNavItems.scss";
 
-const CustomSideLink = ({ to, children, ...props }) => {
-  let pathname = window.location.pathname;
-
-  return SideData.map((val, key) => {
+const SideNavItems = () => {
+  return SideNavData.map((val, key) => {
+    console.log(val.link);
     return (
       <li key={key}>
         <NavLink
@@ -21,4 +20,4 @@ const CustomSideLink = ({ to, children, ...props }) => {
   });
 };
 
-export default CustomSideLink;
+export default SideNavItems;
