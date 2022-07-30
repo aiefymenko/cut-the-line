@@ -4,13 +4,13 @@ const SideNavData = [
   {
     title: "Waitlist",
     icon: <FontAwesomeIcon icon="fa-solid fa-clock" />,
-    link: "admin/waitlist",
+    link: "waitlist",
   },
 
   {
     title: "Settings",
     icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
-    link: "admin/settings",
+    link: "settings",
   },
 
   // {
