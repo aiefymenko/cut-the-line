@@ -4,5 +4,5 @@ Created by Joe Tang, Artem Iefymenko and Michael Buffone.
 
 ## run server
 
-- backend: npm run dev
+- backend: npm start
 - front-end: npm start
