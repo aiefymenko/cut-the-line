@@ -1,16 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SideData = [
+const SideNavData = [
   {
     title: "Waitlist",
     icon: <FontAwesomeIcon icon="fa-solid fa-clock" />,
-    link: "/waitlist",
+    link: "admin/waitlist",
   },
 
   {
     title: "Settings",
     icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
-    link: "/settings",
+    link: "admin/settings",
   },
 
   // {
@@ -20,4 +20,4 @@ const SideData = [
   // },
 ];
 
-export default SideData;
+export default SideNavData;
