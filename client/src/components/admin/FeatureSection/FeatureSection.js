@@ -10,8 +10,8 @@ const FeatureSection = () => {
     <>
       <Header />
       <Routes>
-        <Route path="admin/settings" element={<Setting />} />
-        <Route path="admin/waitlist" element={<Waitlist />} />
+        <Route path="settings" element={<Setting />} />
+        <Route path="waitlist" element={<Waitlist />} />
       </Routes>
     </>
   );
