@@ -1,0 +1,15 @@
+.userForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
+  button {
+    background-color: #2f4050;
+    border: none;
+  }
+
+  button:hover {
+    background-color: #04AA6D;
+  }
+}
