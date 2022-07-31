@@ -1,13 +1,11 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import CreateUser from './CreateUser';
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import CreateUser from "./CreateUser";
 
-import './Popup.scss'
-
+import "./Popup.scss";
 
 export default function Popup({ handleClose }) {
-
   return (
     <div className="userForm">
       <Modal show={true} onHide={handleClose}>
@@ -15,11 +13,9 @@ export default function Popup({ handleClose }) {
           <Modal.Title>Create new user</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-
-        <CreateUser />
-
-      </Modal.Body>
-    <Modal.Footer>
+          <CreateUser />
+        </Modal.Body>
+        <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Back
           </Button>
@@ -29,6 +25,5 @@ export default function Popup({ handleClose }) {
         </Modal.Footer>
       </Modal>
     </div>
-
-  )
+  );
 }
