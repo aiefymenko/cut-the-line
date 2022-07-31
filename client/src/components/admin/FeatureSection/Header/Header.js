@@ -13,14 +13,14 @@ const Header = () => {
 
   return (
     <>
-    <div className="header">
-      <img src={logo} />
-      <h1>Cut The Line</h1>
-      <Button className="create" variant="primary" onClick={handleShow}>
-        Add Client
-      </Button>
-    </div>
-    {show && <Popup handleClose={handleClose} /> }
+      <div className="header">
+        <img src={logo} />
+        <h1>Cut The Line</h1>
+        <Button className="create" variant="primary" onClick={handleShow}>
+          Add Client
+        </Button>
+      </div>
+      {show && <Popup handleClose={handleClose} />}
     </>
   );
 };
