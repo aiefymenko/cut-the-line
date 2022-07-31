@@ -6,3 +6,6 @@ Created by Joe Tang, Artem Iefymenko and Michael Buffone.
 
 - backend: npm start
 - front-end: npm start
+
+-phone-number dependency
+npm i react-phone-number-input
