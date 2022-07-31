@@ -19,69 +19,21 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-//Get all the users
-app.get("/users", (req, res) => {
-  db.query("SELECT * FROM users", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result.rows);
-    }
-  });
-});
-
-//Get user
-app.get("/users/:id", (req, res) => {
-  db.query("SELECT * FROM users WHERE id = $1", [req.params.id], (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result.rows[0]);
-    }
-  });
-});
-
-//Create user
-app.post("/users", (req, res) => {
-  const firstName = req.body.first_name;
-  const lastName = req.body.last_name;
-  const contactNumber = req.body.contact_number;
-  const groupSize = req.body.group_size;
+const complete_session = require("./routes/complete_session");
+const edit_user = require("./routes/edit_user");
+const get_sessions = require("./routes/get_sessions");
+const move_upper_position = require("./routes/move_upper_position");
+const move_lower_position = require("./routes/move_lower_position");
+const new_session = require("./routes/new_session");
 
 
-  db.query("INSERT INTO users (first_name, last_name, contact_number, group_size) VALUES ($1, $2, $3, $4) returning *", [firstName, lastName, contactNumber, groupSize], (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result.rows[0]);
-    }
-  });
-});
 
-//Update user
-// app.put("/users/:id", (req, res) => {
-//   console.log(req.params.id);
-//   console.log(req.body);
-//   res.status(200).json({
-//     status: "success",
-//     data: {
-//       user: "Artem"
-//     },
-     
-//   });
-// });
-
-//Delete user
-app.delete("/users/:id", (req, res) => {
-  db.query("DELETE FROM users WHERE id = $1", [req.params.id], (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result.rows);
-    }
-  });
-});
-
+app.use("/api", complete_session(db));
+app.use("/api", edit_user(db));
+app.use("/api", get_sessions(db));
+app.use("/api", move_upper_position(db));
+app.use("/api", move_lower_position(db));
+app.use("/api", new_session(db));
 
 
 app.listen(port, () => {
