@@ -15,7 +15,7 @@ module.exports = db => {
             WHERE id = $5)
     `;
 
-    const values = [request.body.first_name, request.body.last_name, request.body.contact_number, request.body.group_size, request.params.id];
+    const values = [request.body.first_name, request.body.last_name, request.body.contact_number, request.body.group_size, request.params.session_id];
 
     db.query(queryString, values)
       .then(() => {
