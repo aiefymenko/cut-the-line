@@ -5,7 +5,6 @@ import "./SideNavItems.scss";
 
 const SideNavItems = () => {
   return SideNavData.map((val, key) => {
-    console.log(val.link);
     return (
       <li key={key}>
         <NavLink
