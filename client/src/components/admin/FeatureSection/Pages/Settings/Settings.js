@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import days from "./settingsData";
-import "./Settings.scss";
-import ReadOnly from "./ReadOnly";
-import EditableHours from "./EditableHours";
 
-const MSettings = () => {
+// files
+import days from "./settingsData";
+import ReadOnly from "./Hours/ReadOnlyHours";
+import EditableHours from "./Hours/EditableHours";
+import BusinessForm from "./BusinessForm";
+
+//Scss
+import "./Settings.scss";
+
+const Settings = () => {
   const [hours, setHours] = useState(days);
 
   const [editHourId, setEditHoursId] = useState(null);
@@ -92,10 +97,11 @@ const MSettings = () => {
         </div>
         <div className="b-info">
           <h4>Business Info</h4>
+          <BusinessForm />
         </div>
       </div>
     </div>
   );
 };
 
-export default MSettings;
+export default Settings;

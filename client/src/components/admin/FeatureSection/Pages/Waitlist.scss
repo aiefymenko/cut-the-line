@@ -1,0 +1,30 @@
+.icon{
+  display: flex;
+  justify-content:space-evenly;
+}
+
+.check-icon{
+  color:green;
+}
+
+.no-show{
+  color:red;
+}
+
+.move{
+  color:black;
+}
+
+.update {
+  color:orange;
+}
+
+.button-solid {
+  padding: 0;
+border: none;
+background: none;
+}
+
+.button-solid:active {
+  transform: translateY(4px);
+}
