@@ -5,7 +5,7 @@ import Popup from "../UserDetails/Popup";
 
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({addWaitlist}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -20,7 +20,7 @@ const Header = () => {
           Add Client
         </Button>
       </div>
-      {show && <Popup handleClose={handleClose} />}
+      {show && <Popup addWaitlist={addWaitlist} handleClose={handleClose} />}
     </>
   );
 };
