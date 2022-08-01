@@ -1,0 +1,52 @@
+.card {
+  display: flex;
+  width: 90%;
+  height: 80%;
+  background-color: white;
+  margin: auto;
+  padding: 1rem;
+  
+  .inside {
+    display: flex;
+  }
+
+}
+
+// for store hours
+.hour-info {
+  width: 35%;
+}
+
+.td-day {
+  font-weight: 900;
+  padding-right: 1.2rem;
+}
+
+.td-hour {
+  cursor: pointer;
+}
+
+.td-hour:hover {
+  color: #04AA6D;
+  font-weight: 600;
+}
+
+.edit-buttons {
+  display: flex;
+
+  p{
+    margin: 0;
+    padding: 0.4rem;
+    color: #04AA6D;
+  }
+
+  .cancel {
+    color: red;
+  }
+}
+
+
+// for business info section
+.b-info {
+  width: 60%;
+}

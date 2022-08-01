@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "./Header/Header";
-import Setting from "./Pages/Setting";
+import Settings from "./Pages/Settings/Settings";
 import Waitlist from "./Pages/Waitlist";
 
 const FeatureSection = () => {
@@ -10,7 +10,7 @@ const FeatureSection = () => {
     <>
       <Header />
       <Routes>
-        <Route path="settings" element={<Setting />} />
+        <Route path="settings" element={<Settings />} />
         <Route path="waitlist" element={<Waitlist />} />
       </Routes>
     </>

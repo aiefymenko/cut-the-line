@@ -10,9 +10,15 @@ import AdminApp from "./components/admin/AdminApp";
 
 //Font Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faClock, faGear } from "@fortawesome/free-solid-svg-icons";
+import {
+  faClock,
+  faGear,
+  faEdit,
+  faCheck,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faGear, faClock);
+library.add(faGear, faClock, faEdit, faCheck, faXmark);
 
 function App() {
   return (
