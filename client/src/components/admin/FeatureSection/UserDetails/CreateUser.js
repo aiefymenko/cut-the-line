@@ -3,6 +3,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import './CreateUser.scss';
 
 export default function CreateUser({addWaitlist, handleClose}) {
   const [firstName, setFirstName] = useState("");
@@ -13,6 +14,7 @@ export default function CreateUser({addWaitlist, handleClose}) {
   const onSave = (event) => {
     event.preventDefault();
     addWaitlist(firstName, lastName, phone, groupSize);
+    handleClose();
 
   }
   
@@ -48,12 +50,14 @@ export default function CreateUser({addWaitlist, handleClose}) {
           <option value="5">Five</option>
         </Form.Select>
         </Form.Group>
+        <span className="user-buttons">
         <Button variant="secondary" onClick={handleClose}>
             Back
           </Button>
-          <Button type="submit" variant="primary" onClick={onSave}>
+          <Button type="submit" variant="primary" onClick={onSave} >
             Save Changes
           </Button>
+          </span>
     </Form>
   );
 }

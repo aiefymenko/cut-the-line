@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
-import "./Waitlists.scss";
+import "./Waitlist.scss";
 
 
 export default function Waitlist({waitlist}) {
@@ -16,6 +16,7 @@ export default function Waitlist({waitlist}) {
             <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Phone number</th>
             <th>Party size</th>
             <th>Wait time</th>
             <th></th>
@@ -28,6 +29,7 @@ export default function Waitlist({waitlist}) {
             <td>{waitlist.id}</td>
             <td>{waitlist.first_name}</td>
             <td>{waitlist.last_name}</td>
+            <td>{waitlist.phone_number}</td>
             <td>{waitlist.party_size}</td>
             <td>{waitlist.wait_time}</td>
             <td className="icon">
