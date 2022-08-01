@@ -28,7 +28,7 @@ module.exports = db => {
       `
       UPDATE sessions
       SET position = position - 1
-      WHERE id > $1
+      WHERE position > $1
     `;
 
     const values1 = [request.params.id];
