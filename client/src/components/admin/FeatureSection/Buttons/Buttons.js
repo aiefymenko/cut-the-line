@@ -1,9 +1,21 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button'
+import classNames from "classnames"
 import './Buttons.scss'
 
-export default function Buttons() {
-  return (
-    <Button as="input" type="submit" value="Submit" />
-  )
+export default function Buttons(props) {
+  let buttonClass = classNames("button", {
+    "button--confirm": props.confirm,
+    " --danger": props.danger
+ })
+
+ return (
+   <button
+     className={buttonClass}
+    //  icon={props.icon}
+     onClick={props.onClick}
+     disabled={props.disabled}
+   >
+     {props.children}
+   </button>
+ );
 }
