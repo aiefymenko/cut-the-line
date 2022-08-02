@@ -1,0 +1,79 @@
+.card {
+  display: flex;
+  width: 90%;
+  height: 70%;
+  background-color: white;
+  margin: auto;
+  padding: 1rem;
+  color: #2f4050;
+  
+  .inside {
+    display: flex;
+  }
+
+  h4{
+    color: #2f4050;
+    font-weight: 900;
+  }
+
+}
+
+// for store hours
+.hour-info {
+  width: 35%;
+}
+
+.td-day {
+  font-weight: 900;
+  padding: 10px 0;
+  padding-right: 1.8rem;
+  
+}
+
+.td-hour {
+  cursor: pointer;
+  padding: 10px 0;
+  font-weight: 600;
+}
+
+.td-hour:hover {
+  color: #04AA6D;
+}
+
+.edit-buttons {
+  display: flex;
+
+  button, .cancel{
+    margin: 0;
+    padding: 0.4rem;
+  }
+
+  button {
+    color: #04AA6D;
+    border: none;
+    background-color: white;
+  }
+
+  .cancel {
+    color: red;
+  }
+}
+
+
+// for business info section
+.b-info {
+  width: 60%;
+
+  label {
+    font-weight: 700;
+  }
+
+  input {
+    width: 75%;
+  }
+
+  button {
+    margin-right: 10px ;
+  }
+
+}
