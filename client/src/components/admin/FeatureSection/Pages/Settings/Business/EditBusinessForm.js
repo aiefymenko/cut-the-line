@@ -1,10 +1,10 @@
 import React from "react";
 
-import Button from "react-bootstrap/Button";
+//bootstrap fontawesome
 import Form from "react-bootstrap/Form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const EditBusinessForm = ({
-  store,
   handleEditFormChange,
   editFormData,
   handleCancelClick,
@@ -44,12 +44,27 @@ const EditBusinessForm = ({
           onChange={handleEditFormChange}
         />
       </Form.Group>
-      <Button variant="success" type="submit">
-        Save
-      </Button>
-      <Button variant="danger" type="button" onClick={handleCancelClick}>
-        Cancel
-      </Button>
+      <Form.Group className="mb-3">
+        <Form.Label>Capacity</Form.Label>
+        <Form.Control
+          name="capacity"
+          type="number"
+          className="number-edit"
+          placeholder="Enter Capacity"
+          value={editFormData.capacity}
+          onChange={handleEditFormChange}
+        />
+      </Form.Group>
+      <button type="submit" className="submit">
+        <span>
+          <FontAwesomeIcon icon="fa-solid fa-circle-check" />
+        </span>
+      </button>
+      <button type="button" className="cancel-edit" onClick={handleCancelClick}>
+        <span>
+          <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
+        </span>
+      </button>
     </>
   );
 };
