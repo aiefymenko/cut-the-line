@@ -22,7 +22,7 @@
 .hour-info {
   width: 35%;
 }
-
+// hours table list
 .td-day {
   font-weight: 900;
   padding: 10px 0;
@@ -39,7 +39,9 @@
 .td-hour:hover {
   color: #04AA6D;
 }
+//end hour table section
 
+// buttons for hour section
 .edit-buttons {
   display: flex;
 
@@ -57,6 +59,7 @@
   .cancel {
     color: red;
   }
+  //end button hour section
 }
 
 
@@ -72,8 +75,43 @@
     width: 75%;
   }
 
-  button {
-    margin-right: 10px ;
+  .number-edit {
+    width: auto;
   }
 
+  // buttons for business info section
+  button {
+    margin-right: 10px ;
+
+    span {
+      font-size: 1.5rem;
+    }
+
+  }
+
+  .edit, .submit, .cancel-edit {
+    background-color: white;
+    border: none;
+  }
+
+  .edit {
+    color: orange;
+  }
+
+  .cancel-edit {
+    color: red;
+
+    span {
+      font-size: 2rem;
+    }
+  }
+
+  .submit {
+    color: #04AA6D;
+
+    span {
+      font-size: 2rem;
+    }
+  }
+  //end buttons for business info
 }
