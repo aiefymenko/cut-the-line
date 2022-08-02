@@ -21,9 +21,9 @@ const EditableHours = ({
         ></input>
       </td>
       <td className="edit-buttons">
-        <p type="submit">
+        <button type="submit">
           <FontAwesomeIcon icon="fa-solid fa-check" />
-        </p>
+        </button>
         <p className="cancel" onClick={handleCancelClick}>
           <FontAwesomeIcon icon="fa-solid fa-xmark" />
         </p>
