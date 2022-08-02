@@ -7,7 +7,7 @@ import SideNav from "./SideBar/SideNav";
 import FeatureSection from "./FeatureSection/FeatureSection";
 
 // SCSS
-import "./App.scss";
+import "./AdminApp.scss";
 
 //Font Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";

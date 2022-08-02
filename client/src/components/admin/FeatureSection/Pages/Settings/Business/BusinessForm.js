@@ -11,6 +11,7 @@ const companies = [
     name: "Passport Service",
     url: "Localhost:3000/admin",
     location: "Toronto, Canada",
+    capacity: 35,
   },
 ];
 
@@ -22,6 +23,7 @@ const BusinessForm = () => {
     name: "",
     url: "",
     location: "",
+    capacity: null,
   });
   //edit functions
   const handleEditClick = (event, store) => {
@@ -32,6 +34,7 @@ const BusinessForm = () => {
       name: store.name,
       url: store.url,
       location: store.location,
+      capacity: store.capacity,
     };
 
     setEditFormData(formValues);
@@ -57,6 +60,7 @@ const BusinessForm = () => {
       name: editFormData.name,
       url: editFormData.url,
       location: editFormData.location,
+      capacity: editFormData.capacity,
     };
 
     const newFields = [...stores];

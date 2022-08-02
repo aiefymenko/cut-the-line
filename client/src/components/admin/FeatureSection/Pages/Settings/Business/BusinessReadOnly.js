@@ -1,7 +1,8 @@
 import React from "react";
 
-import Button from "react-bootstrap/Button";
+//bootstrap font-awesome
 import Form from "react-bootstrap/Form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const BusinessReadOnly = ({ store, handleEditClick }) => {
   return (
@@ -18,9 +19,19 @@ const BusinessReadOnly = ({ store, handleEditClick }) => {
         <Form.Label>Location</Form.Label>
         <p>{store.location}</p>
       </Form.Group>
-      <Button type="button" onClick={(event) => handleEditClick(event, store)}>
-        Edit
-      </Button>
+      <Form.Group className="mb-3">
+        <Form.Label>Capacity</Form.Label>
+        <p>{store.capacity}</p>
+      </Form.Group>
+      <button
+        className="edit"
+        type="button"
+        onClick={(event) => handleEditClick(event, store)}
+      >
+        <span>
+          <FontAwesomeIcon icon="fa-solid fa-user-pen" />
+        </span>
+      </button>
     </>
   );
 };
