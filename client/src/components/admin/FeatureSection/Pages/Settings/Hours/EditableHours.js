@@ -22,10 +22,10 @@ const EditableHours = ({
       </td>
       <td className="edit-buttons">
         <button type="submit">
-          <FontAwesomeIcon icon="fa-solid fa-check" />
+          <FontAwesomeIcon icon="fa-solid fa-circle-check" />
         </button>
         <p className="cancel" onClick={handleCancelClick}>
-          <FontAwesomeIcon icon="fa-solid fa-xmark" />
+          <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
         </p>
       </td>
     </tr>

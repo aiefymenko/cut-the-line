@@ -13,12 +13,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faClock,
   faGear,
-  faEdit,
-  faCheck,
-  faXmark,
+  faCircleCheck,
+  faUserPen,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faGear, faClock, faEdit, faCheck, faXmark);
+library.add(faGear, faClock, faUserPen, faCircleCheck, faCircleXmark);
 
 function App() {
   return (
