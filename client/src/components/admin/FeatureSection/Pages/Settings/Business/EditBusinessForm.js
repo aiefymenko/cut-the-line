@@ -44,7 +44,7 @@ const EditBusinessForm = ({
           onChange={handleEditFormChange}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="success" type="submit">
         Save
       </Button>
       <Button variant="danger" type="button" onClick={handleCancelClick}>
