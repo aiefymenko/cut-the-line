@@ -1,35 +1,28 @@
 import React from "react";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const BusinessForm = () => {
+const BusinessReadOnly = ({ store, handleEditClick }) => {
   return (
     <>
       <Form.Group className="mb-3">
         <Form.Label>Business Name</Form.Label>
-        <Form.Control name="name" type="text" placeholder="Company Name" />
+        <p>{store.name}</p>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Business URL</Form.Label>
-        <Form.Control
-          name="url"
-          type="text"
-          placeholder="Localhost:3000/admin"
-        />
+        <p>{store.url}</p>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Location</Form.Label>
-        <Form.Control
-          name="location"
-          type="text"
-          placeholder="Toronto Ont, Canada"
-        />
+        <p>{store.location}</p>
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
+      <Button type="button" onClick={(event) => handleEditClick(event, store)}>
+        Edit
       </Button>
     </>
   );
 };
 
-export default BusinessForm;
+export default BusinessReadOnly;
