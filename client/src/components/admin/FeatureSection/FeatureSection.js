@@ -11,27 +11,30 @@ const FeatureSection = () => {
       id: 1,
       first_name: "Joe",
       last_name: "Tang",
-      phone_number: "",
-      party_size: 3,
-      wait_time: "2hrs",
+      contact_number: "1416-222-1234",
+      group_size: 3,
+      wait_duration: "80 mins",
+      position: 2
     },
     {
       id: 2,
       first_name: "Artem",
       last_name: "Iefymenko",
-      phone_number: "",
-      party_size: 2,
-      wait_time: "2.5hrs",
+      contact_number: "1416-567-7890",
+      group_size: 2,
+      wait_duration: "90 mins",
+      position: 1
     },
     {
       id: 3,
       first_name: "Michael",
       last_name: "Buffone",
-      phone_number: "",
-      party_size: 4,
-      wait_time: "3hrs",
+      contact_number: "1647-299-4567",
+      group_size: 4,
+      wait_duration: "60 mins",
+      position: 3
     },
-  ]);
+  ].sort((a, b) => a.position - b.position));
 
   const addWaitlist = (firstName, lastName, phone, groupSize) => {
     setWaitlist([
@@ -40,9 +43,10 @@ const FeatureSection = () => {
         id: 4,
         first_name: firstName,
         last_name: lastName,
-        phone_number: phone,
-        party_size: groupSize,
-        wait_time: "",
+        contact_number: phone,
+        group_size: groupSize,
+        wait_duration: "0 min",
+        position: 4
       },
     ]);
   };
