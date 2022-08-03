@@ -4,7 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./Waitlist.scss";
 
-export default function Waitlist({ waitlist }) {
+export default function Waitlist({ waitlist, setWaitlist }) {
+
+  const sortWaitList = (waitlist) => {
+    const sortedWaitList = [...waitlist];
+    sortedWaitList.sort((a, b) => a.position - b.position);
+    setWaitlist(sortedWaitList);
+  }
+
   return (
     <div>
       <h3 className="title">Waitlist</h3>
@@ -21,21 +28,21 @@ export default function Waitlist({ waitlist }) {
           </tr>
         </thead>
         <tbody>
-          {waitlist.map((waitlist) => {
+          {waitlist.map((session) => {
             return (
-              <tr key={waitlist.id}>
-                <td>{waitlist.id}</td>
-                <td>{waitlist.first_name}</td>
-                <td>{waitlist.last_name}</td>
-                <td>{waitlist.phone_number}</td>
-                <td>{waitlist.party_size}</td>
-                <td>{waitlist.wait_time}</td>
+              <tr key={session.id}>
+                <td>{session.id}</td>
+                <td>{session.first_name}</td>
+                <td>{session.last_name}</td>
+                <td>{session.contact_number}</td>
+                <td>{session.group_size}</td>
+                <td>{session.wait_duration}</td>
                 <td className="icon">
                   <button className="button-solid">
                     <i className="fa-solid fa-circle-check fa-2x check-icon"></i>
                   </button>
                   <button className="button-solid">
-                    <i className="fa-solid fa-bell fa-2x no-show"></i>
+                    <i class="fa-solid fa-trash fa-2x no-show"></i>
                   </button>
                   <button className="button-solid">
                     <i className="fa-solid fa-arrows-up-down fa-2x move"></i>
@@ -44,7 +51,7 @@ export default function Waitlist({ waitlist }) {
                     <i className="fa-solid fa-user-pen fa-2x update"></i>
                   </button>
                   <button className="button-solid">
-                    <i className="fa-solid fa-comment-sms fa-2x sms"></i>
+                    <i className="fa-solid fa-ghost fa-2x no-show"></i>
                   </button>
                 </td>
               </tr>
