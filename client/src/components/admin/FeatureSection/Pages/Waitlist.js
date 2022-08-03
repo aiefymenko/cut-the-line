@@ -4,14 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./Waitlist.scss";
 
-export default function Waitlist({ waitlist, setWaitlist }) {
-
-  const sortWaitList = (waitlist) => {
-    const sortedWaitList = [...waitlist];
-    sortedWaitList.sort((a, b) => a.position - b.position);
-    setWaitlist(sortedWaitList);
-  }
-
+export default function Waitlist({ waitlist }) {
   return (
     <div>
       <h3 className="title">Waitlist</h3>
