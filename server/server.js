@@ -25,7 +25,7 @@ const get_sessions = require("./routes/get_sessions");
 const move_upper_position = require("./routes/move_upper_position");
 const move_lower_position = require("./routes/move_lower_position");
 const new_session = require("./routes/new_session");
-
+const get_settings = require("./routes/get_settings");
 
 
 app.use("/api", complete_session(db));
@@ -34,6 +34,7 @@ app.use("/api", get_sessions(db));
 app.use("/api", move_upper_position(db));
 app.use("/api", move_lower_position(db));
 app.use("/api", new_session(db));
+app.use("/api", get_settings(db));
 
 
 app.listen(port, () => {
