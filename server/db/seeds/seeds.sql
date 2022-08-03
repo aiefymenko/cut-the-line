@@ -4,7 +4,7 @@ INSERT INTO outcomes (value) VALUES ('User Cancelled');
 INSERT INTO outcomes (value) VALUES ('Admin Cancelled');
 INSERT INTO outcomes (value) VALUES ('Waiting');
 
-INSERT INTO settings (name, url, capacity) VALUES ('Passport Service', 'https://localhost:3001', 35 );
+INSERT INTO settings (name, url, capacity, location) VALUES ('Passport Service', 'https://localhost:3001/user', 35, 'Toronto' );
 
 INSERT INTO users (first_name, last_name, contact_number, group_size) VALUES ('Artem', 'Iefymenko', '+1416-696-5576', 3);
 INSERT INTO users (first_name, last_name, contact_number, group_size) VALUES ('Joe', 'Tang', '+1437-222-333', 4);
@@ -13,9 +13,9 @@ INSERT INTO users (first_name, last_name, contact_number, group_size) VALUES ('J
 
 INSERT INTO waitlists (setting_id) VALUES (1);
 
-INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 1, 5, '2022-07-26 09:06:14', null, 1);
-INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 4, 5, '2022-07-26 09:25:33', null, 2);
-INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 2, 5, '2022-07-26 09:28:10', null, 3);
-INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 3, 5, '2022-07-26 10:03:01', null, 4);
+INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 1, 5, CURRENT_TIMESTAMP - (90 * interval '1 minute'), null, 1);
+INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 4, 5, CURRENT_TIMESTAMP - (80 * interval '1 minute'), null, 2);
+INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 2, 5, CURRENT_TIMESTAMP - (70 * interval '1 minute'), null, 3);
+INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 3, 5, CURRENT_TIMESTAMP - (60 * interval '1 minute'), null, 4);
 
 
