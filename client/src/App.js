@@ -26,8 +26,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/admin/*" element={<AdminApp />} />
-        {/* <Route path="/user/*" element={<UserApp />} /> */}
-        <Route path="/user/*" element={<User />} />
+        <Route path="/user/*" element={<UserApp />} />
       </Routes>
     </div>
   );
