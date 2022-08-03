@@ -14,7 +14,8 @@ CREATE TABLE settings (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR (255) NOT NULL,
   url VARCHAR (255) NOT NULL,
-  capacity INTEGER NOT NULL
+  capacity INTEGER NOT NULL,
+  location VARCHAR (255) NOT NULL
 );
 
 CREATE TABLE users (
@@ -38,5 +39,4 @@ CREATE TABLE sessions (
   date_start TIMESTAMP NOT NULL,
   date_end TIMESTAMP,
   position INTEGER NOT NULL
-
 );
