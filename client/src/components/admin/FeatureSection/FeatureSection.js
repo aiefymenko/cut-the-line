@@ -51,12 +51,22 @@ const FeatureSection = () => {
     ]);
   };
 
+  const handleDeleteClick = (sessionId) => {
+    const newWaitlist = [...waitlist];
+
+    const index = waitlist.findIndex((session) => session.id === sessionId);
+
+    newWaitlist.splice(index, 1);
+
+    setWaitlist(newWaitlist);
+  }
+
   return (
     <>
       <Header addWaitlist={addWaitlist} />
       <Routes>
         <Route path="settings" element={<Setting />} />
-        <Route path="waitlist" element={<Waitlist waitlist={waitlist} />} />
+        <Route path="waitlist" element={<Waitlist waitlist={waitlist} handleDeleteClick={handleDeleteClick} />} />
       </Routes>
     </>
   );
