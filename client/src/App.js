@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 //Files
 import UserApp from "./components/user/UserApp";
+import User from "./components/user/User";
 import AdminApp from "./components/admin/AdminApp";
 
 // SCSS
@@ -25,7 +26,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/admin/*" element={<AdminApp />} />
-        <Route path="/user/*" element={<UserApp />} />
+        {/* <Route path="/user/*" element={<UserApp />} /> */}
+        <Route path="/user/*" element={<User />} />
       </Routes>
     </div>
   );

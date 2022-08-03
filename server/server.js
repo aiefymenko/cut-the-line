@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const pino = require("express-pino-logger")();
 const port = 3001;
 
 //Connect our Database to server
@@ -16,22 +17,42 @@ db.connect();
 //Express configuration
 app.use(bodyParser.json());
 app.use(cors());
+app.use(pino);
 
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
+const client = require("twilio")(accountSid, authToken, TWILIO_PHONE_NUMBER);
 //twilio
-// Download the helper library from https://www.twilio.com/docs/node/install
-// Find your Account SID and Auth Token at twilio.com/console
-// and set the environment variables. See http://twil.io/secure
-// const accountSid = process.env.TWILIO_ACCOUNT_SID;
-// const authToken = process.env.TWILIO_AUTH_TOKEN;
-// const client = require("twilio")(accountSid, authToken);
+app.post("/api/messages", (req, res) => {
+  // res.header("Content-Type", "application/json");
+  console.log(req.body);
+  client.messages
+    .create({
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: req.body.to,
+      body: req.body.body,
+    })
+    .then(() => {
+      res.status(201).send(req.body.body);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
 
 // client.messages
-//   .create({
-//     body: "Your on the waitlist",
-//     from: "+19206146871",
-//     to: "+15145746006",
-//   })
-//   .then((message) => console.log(message.status));
+// .create({
+//   from: process.env.TWILIO_PHONE_NUMBER,
+//   to: req.body.to,
+//   body: req.body.body,
+// })
+// .then(() => {
+// res.status(201).send();
+// })
+// .catch((err) => {
+//   res.status(500).json({ error: err.message });
+// });
 
 const complete_session = require("./routes/complete_session");
 const edit_user = require("./routes/edit_user");
