@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./Waitlist.scss";
 
-export default function Waitlist({ waitlist }) {
+export default function Waitlist({ waitlist, handleDeleteClick }) {
   return (
     <div>
       <h3 className="title">Waitlist</h3>
@@ -34,7 +34,7 @@ export default function Waitlist({ waitlist }) {
                   <button className="button-solid">
                     <i className="fa-solid fa-circle-check fa-2x check-icon"></i>
                   </button>
-                  <button className="button-solid">
+                  <button className="button-solid" onClick={() => handleDeleteClick(session.id)}>
                     <i class="fa-solid fa-trash fa-2x no-show"></i>
                   </button>
                   <button className="button-solid">
