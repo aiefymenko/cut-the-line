@@ -1,34 +1,56 @@
 import React, { useState } from "react";
+import axios from "axios";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+//bootstrap
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import './CreateUser.scss';
+//Scss
+import "./CreateUser.scss";
 
-export default function CreateUser({addWaitlist, handleClose}) {
+export default function CreateUser({ addWaitlist, handleClose }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [groupSize, setGroupSize] = useState("");
 
+  const message = `Welcome ${firstName} you are now in line for Passport Service`;
+
   const onSave = (event) => {
     event.preventDefault();
     addWaitlist(firstName, lastName, phone, groupSize);
-    handleClose();
 
-  }
-  
+    axios
+      .post("http://localhost:3001/api/messages", {
+        to: `${phone}`,
+        body: message,
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+
+    handleClose();
+  };
 
   return (
     <Form>
       <Form.Group className="mb-3" controlId="form-text">
         <Form.Label>First Name</Form.Label>
-        <Form.Control value={firstName} onChange={e => setFirstName(e.target.value)} type="text" placeholder="Enter your First Name" />
+        <Form.Control
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          type="text"
+          placeholder="Enter your First Name"
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Last Name</Form.Label>
-        <Form.Control value={lastName} onChange={e => setLastName(e.target.value)} type="text" placeholder="Last Name" />
+        <Form.Control
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          type="text"
+          placeholder="Last Name"
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="form-text">
@@ -41,7 +63,11 @@ export default function CreateUser({addWaitlist, handleClose}) {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="form-text">
-        <Form.Select aria-label="Floating label select example" value={groupSize} onChange={e => setGroupSize(e.target.value)}>
+        <Form.Select
+          aria-label="Floating label select example"
+          value={groupSize}
+          onChange={(e) => setGroupSize(e.target.value)}
+        >
           <option>Group size</option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -49,15 +75,15 @@ export default function CreateUser({addWaitlist, handleClose}) {
           <option value="4">Four</option>
           <option value="5">Five</option>
         </Form.Select>
-        </Form.Group>
-        <span className="user-buttons">
+      </Form.Group>
+      <span className="user-buttons">
         <Button variant="secondary" onClick={handleClose}>
-            Back
-          </Button>
-          <Button type="submit" variant="primary" onClick={onSave} >
-            Save Changes
-          </Button>
-          </span>
+          Back
+        </Button>
+        <Button type="submit" variant="primary" onClick={onSave}>
+          Save Changes
+        </Button>
+      </span>
     </Form>
   );
 }
