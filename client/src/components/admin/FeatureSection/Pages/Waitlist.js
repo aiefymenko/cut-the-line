@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
@@ -6,12 +6,14 @@ import "./Waitlist.scss";
 import Popup from "../UserDetails/Popup";
 import PopupEdit from "../UserDetails/PopupEdit";
 
+
 export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClick, handleAdmitClick, editWaitlist }) {
   const [showEdit, setShowEdit] = useState({ visible: false, sessionId: - 1 });
   const handleCloseEdit = () => setShowEdit({ visible: false, sessionId: -1 });
   const handleShowEdit = (sessionId) => setShowEdit({ visible: true, sessionId: sessionId });
 
   return (
+
     <div>
       <h3 className="title">Waitlist</h3>
       <div>
@@ -30,9 +32,9 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
           </tr>
         </thead>
         <tbody>
-          {waitlist.map((session) => {
+          {waitlist.map((session, i) => {
             return (
-              <tr key={session.id}>
+              <tr key={i}>
                 <td>{session.id}</td>
                 <td>{session.first_name}</td>
                 <td>{session.last_name}</td>
