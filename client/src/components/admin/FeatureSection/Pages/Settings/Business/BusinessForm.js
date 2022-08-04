@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 //Files
 import EditBusinessForm from "./EditBusinessForm";
 //BootStrap
 import Form from "react-bootstrap/Form";
 import BusinessReadOnly from "./BusinessReadOnly";
-//dummy data until database
-const companies = [
-  {
-    id: 1,
-    name: "Passport Service",
-    url: "Localhost:3000/admin",
-    location: "Toronto, Canada",
-    capacity: 35,
-  },
-];
 
 const BusinessForm = () => {
+  let companies = [];
   //states
   const [stores, setStores] = useState(companies);
   const [editStoreId, setEditStoreId] = useState(null);
@@ -25,6 +17,13 @@ const BusinessForm = () => {
     location: "",
     capacity: null,
   });
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/get_settings")
+      .then((res) => setStores(res.data));
+  }, []);
+
   //edit functions
   const handleEditClick = (event, store) => {
     event.preventDefault();
@@ -71,6 +70,10 @@ const BusinessForm = () => {
 
     setStores(newFields);
     setEditStoreId(null);
+
+    axios.put("http://localhost:3001/api/get_settings").then((res) => {
+      setStores(res.data);
+    });
   };
 
   const handleCancelClick = () => {
