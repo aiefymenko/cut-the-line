@@ -51,6 +51,21 @@ const FeatureSection = () => {
     ]);
   };
 
+  const editWaitlist = (sessionId, firstName, lastName, phone, groupSize) => {
+    const newWaitList = [...waitlist];
+
+    newWaitList.forEach((session) => {
+      if (session.id === sessionId) {
+        session.first_name = firstName;
+        session.last_name = lastName;
+        session.contact_number = phone;
+        session.group_size = groupSize;
+      }
+    });
+
+    setWaitlist(newWaitList);
+  };
+
   const handleDeleteClick = (sessionId) => {
     const newWaitlist = [...waitlist];
 
@@ -86,7 +101,7 @@ const FeatureSection = () => {
       <Header addWaitlist={addWaitlist} />
       <Routes>
         <Route path="settings" element={<Setting />} />
-        <Route path="waitlist" element={<Waitlist waitlist={waitlist} handleDeleteClick={handleDeleteClick} handleNoShowClick={handleNoShowClick} handleAdmitClick={handleAdmitClick} />} />
+        <Route path="waitlist" element={<Waitlist waitlist={waitlist} handleDeleteClick={handleDeleteClick} handleNoShowClick={handleNoShowClick} handleAdmitClick={handleAdmitClick} editWaitlist={editWaitlist} />} />
       </Routes>
     </>
   );
