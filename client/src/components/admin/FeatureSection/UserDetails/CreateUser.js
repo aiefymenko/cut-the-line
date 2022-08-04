@@ -19,18 +19,19 @@ export default function CreateUser({ addWaitlist, handleClose }) {
   const onSave = (event) => {
     event.preventDefault();
     addWaitlist(firstName, lastName, phone, groupSize);
+    axios
+      .post("http://localhost:3001/api/messages", {
+        to: `${phone}`,
+        body: message,
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+    handleClose();
+  };
 
-  }
 
-  axios
-    .post("http://localhost:3001/api/messages", {
-      to: `${phone}`,
-      body: message,
-    })
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
 
-  handleClose();
+
 
   return (
     <Form>
@@ -70,7 +71,6 @@ export default function CreateUser({ addWaitlist, handleClose }) {
           value={groupSize}
           onChange={(e) => setGroupSize(e.target.value)}
         >
-          <option>Group size</option>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
