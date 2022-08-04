@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 //Files
 import UserApp from "./components/user/UserApp";
+import User from "./components/user/User";
 import AdminApp from "./components/admin/AdminApp";
 
 // SCSS

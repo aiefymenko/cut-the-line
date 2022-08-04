@@ -1,12 +1,12 @@
-import React from 'react'
-import CreateUser from '../admin/FeatureSection/UserDetails/CreateUser'
-import './UserApp.scss'
+import React from "react";
+import CreateUser from "../admin/FeatureSection/UserDetails/CreateUser";
+import "./UserApp.scss";
 
-export default function UserApp () {
+export default function UserApp() {
   return (
-    <div className ='userForm'>
+    <div className="userForm">
       <h1> Enter your details</h1>
-    <CreateUser />
+      <CreateUser />
     </div>
-  )
+  );
 }
