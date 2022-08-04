@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
 
 import Header from "./Header/Header";
 import Setting from "./Pages/Settings/Settings";
@@ -9,46 +10,35 @@ const FeatureSection = () => {
   const [waitlist, setWaitlist] = useState([
     {
       id: 1,
-      first_name: "Joe",
-      last_name: "Tang",
-      contact_number: "1416-222-1234",
+      first_name: "Jane",
+      last_name: "Doe",
+      contact_number: "",
       group_size: 3,
-      wait_duration: "80 mins",
+      wait_duration: "",
       position: 2
-    },
-    {
-      id: 2,
-      first_name: "Artem",
-      last_name: "Iefymenko",
-      contact_number: "1416-567-7890",
-      group_size: 2,
-      wait_duration: "90 mins",
-      position: 1
-    },
-    {
-      id: 3,
-      first_name: "Michael",
-      last_name: "Buffone",
-      contact_number: "1647-299-4567",
-      group_size: 4,
-      wait_duration: "60 mins",
-      position: 3
-    },
+    }
+    
   ].sort((a, b) => a.position - b.position));
 
-  const addWaitlist = (firstName, lastName, phone, groupSize) => {
-    setWaitlist([
-      ...waitlist,
-      {
-        id: 4,
-        first_name: firstName,
-        last_name: lastName,
-        contact_number: phone,
-        group_size: groupSize,
-        wait_duration: "0 min",
-        position: 4
-      },
-    ]);
+  // GET sessions
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/get_sessions").then((response) => {
+      setWaitlist(response.data);
+    });
+  }, []);
+
+  //POST sessions
+    const addWaitlist = (firstName, lastName, phone, groupSize) => {
+      axios.post("http://localhost:3001/api/new_session", 
+        {
+          first_name: firstName,
+          last_name: lastName,
+          contact_number: phone,
+          group_size: groupSize,
+        })
+        .then((response) => {
+          setWaitlist(...waitlist, response.data);
+      }) 
   };
 
   const editWaitlist = (sessionId, firstName, lastName, phone, groupSize) => {
