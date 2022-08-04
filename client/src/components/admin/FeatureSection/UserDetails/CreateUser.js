@@ -20,21 +20,17 @@ export default function CreateUser({ addWaitlist, handleClose }) {
     event.preventDefault();
     addWaitlist(firstName, lastName, phone, groupSize);
 
-<<<<<<< HEAD
   }
 
-=======
-    axios
-      .post("http://localhost:3001/api/messages", {
-        to: `${phone}`,
-        body: message,
-      })
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+  axios
+    .post("http://localhost:3001/api/messages", {
+      to: `${phone}`,
+      body: message,
+    })
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
 
-    handleClose();
-  };
->>>>>>> 059dce12dc72286d6284ff07b8e2ba65060420bd
+  handleClose();
 
   return (
     <Form>
@@ -69,16 +65,12 @@ export default function CreateUser({ addWaitlist, handleClose }) {
       </Form.Group>
       <Form.Label>Group Size</Form.Label>
       <Form.Group className="mb-3" controlId="form-text">
-<<<<<<< HEAD
-        <Form.Select aria-label="Floating label select example" value={groupSize} onChange={e => setGroupSize(e.target.value)}>
-=======
         <Form.Select
           aria-label="Floating label select example"
           value={groupSize}
           onChange={(e) => setGroupSize(e.target.value)}
         >
           <option>Group size</option>
->>>>>>> 059dce12dc72286d6284ff07b8e2ba65060420bd
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
@@ -90,11 +82,7 @@ export default function CreateUser({ addWaitlist, handleClose }) {
         <Button variant="secondary" onClick={handleClose}>
           Back
         </Button>
-<<<<<<< HEAD
-        <Button type="submit" variant="primary" onClick={onSave} >
-=======
         <Button type="submit" variant="primary" onClick={onSave}>
->>>>>>> 059dce12dc72286d6284ff07b8e2ba65060420bd
           Save Changes
         </Button>
       </span>
