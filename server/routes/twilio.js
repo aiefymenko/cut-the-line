@@ -1,6 +1,7 @@
 const router = require("express").Router();
 require("dotenv").config();
 
+//to send sms by twilio
 module.exports = () => {
   const accountSid = process.env.TWILIO_ACCOUNT_SID;
   const authToken = process.env.TWILIO_AUTH_TOKEN;
