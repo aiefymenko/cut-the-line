@@ -7,9 +7,8 @@ module.exports = () => {
   const authToken = process.env.TWILIO_AUTH_TOKEN;
   const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
   const client = require("twilio")(accountSid, authToken, TWILIO_PHONE_NUMBER);
-  //twilio
+
   router.post("/messages", (req, res) => {
-    console.log(req.body);
     client.messages
       .create({
         from: process.env.TWILIO_PHONE_NUMBER,
@@ -25,4 +24,3 @@ module.exports = () => {
   });
   return router;
 };
-//test
