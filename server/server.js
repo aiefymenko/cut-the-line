@@ -19,6 +19,26 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(pino);
 
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
+const client = require("twilio")(accountSid, authToken, TWILIO_PHONE_NUMBER);
+//twilio
+app.post("/api/messages", (req, res) => {
+  client.messages
+    .create({
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: req.body.to,
+      body: req.body.body,
+    })
+    .then(() => {
+      res.status(201).send(req.body.body);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 const complete_session = require("./routes/complete_session");
 const edit_user = require("./routes/edit_user");
 const get_sessions = require("./routes/get_sessions");
