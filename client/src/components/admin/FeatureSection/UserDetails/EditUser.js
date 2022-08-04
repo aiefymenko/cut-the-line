@@ -5,19 +5,17 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import './CreateUser.scss';
 
-export default function CreateUser({ addWaitlist, handleClose }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [groupSize, setGroupSize] = useState("");
+export default function EditUser({ editWaitlist, handleClose, session, sessionId }) {
+  const [firstName, setFirstName] = useState(session.first_name);
+  const [lastName, setLastName] = useState(session.last_name);
+  const [phone, setPhone] = useState(session.contact_number);
+  const [groupSize, setGroupSize] = useState(session.group_size);
 
   const onSave = (event) => {
     event.preventDefault();
-    addWaitlist(firstName, lastName, phone, groupSize);
+    editWaitlist(sessionId, firstName, lastName, phone, groupSize);
     handleClose();
-
   }
-
 
   return (
     <Form>
@@ -40,6 +38,7 @@ export default function CreateUser({ addWaitlist, handleClose }) {
           onChange={setPhone}
         />
       </Form.Group>
+
       <Form.Label>Group Size</Form.Label>
       <Form.Group className="mb-3" controlId="form-text">
         <Form.Select aria-label="Floating label select example" value={groupSize} onChange={e => setGroupSize(e.target.value)}>
@@ -50,6 +49,7 @@ export default function CreateUser({ addWaitlist, handleClose }) {
           <option value="5">Five</option>
         </Form.Select>
       </Form.Group>
+
       <span className="user-buttons">
         <Button variant="secondary" onClick={handleClose}>
           Back
