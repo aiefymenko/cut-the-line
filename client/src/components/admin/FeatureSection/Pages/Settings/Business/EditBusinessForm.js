@@ -14,6 +14,7 @@ const EditBusinessForm = ({
       <Form.Group className="mb-3">
         <Form.Label>Business Name</Form.Label>
         <Form.Control
+          required
           name="name"
           type="text"
           placeholder="Company Name"
@@ -24,6 +25,7 @@ const EditBusinessForm = ({
       <Form.Group className="mb-3">
         <Form.Label>Business URL</Form.Label>
         <Form.Control
+          required
           disabled
           readOnly
           className="bus-label"
@@ -37,6 +39,7 @@ const EditBusinessForm = ({
       <Form.Group className="mb-3">
         <Form.Label>Location</Form.Label>
         <Form.Control
+          required
           name="location"
           type="text"
           placeholder="Enter City, Prov, Country"
@@ -47,6 +50,7 @@ const EditBusinessForm = ({
       <Form.Group className="mb-3">
         <Form.Label>Capacity</Form.Label>
         <Form.Control
+          required
           name="capacity"
           type="number"
           className="number-edit"
