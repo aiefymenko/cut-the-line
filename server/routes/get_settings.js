@@ -6,7 +6,9 @@ module.exports = (db) => {
   router.get("/get_settings", (request, response) => {
     db.query(
       `
-      SELECT name,
+      SELECT 
+        id,
+        name,
         url,
         capacity,
         LOCATION

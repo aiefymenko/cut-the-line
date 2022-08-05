@@ -3,8 +3,7 @@ const { response } = require("express");
 const router = require("express").Router();
 
 module.exports = (db) => {
-  router.put("/edit_settings/:id", (request, response) => {
-    console.log(req.params.id);
+  router.put("/edit_settings", (request, response) => {
     const queryString = `
       UPDATE settings
       SET name = $1,
@@ -18,7 +17,7 @@ module.exports = (db) => {
       request.body.url,
       request.body.capacity,
       request.body.location,
-      request.params.id,
+      request.body.id,
     ];
 
     db.query(queryString, values)
