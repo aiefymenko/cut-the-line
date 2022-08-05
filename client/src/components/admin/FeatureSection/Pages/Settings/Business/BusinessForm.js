@@ -7,6 +7,17 @@ import Form from "react-bootstrap/Form";
 import BusinessReadOnly from "./BusinessReadOnly";
 
 const BusinessForm = () => {
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
   //states
   const [stores, setStores] = useState([]);
   const [editStoreId, setEditStoreId] = useState(null);
@@ -54,6 +65,30 @@ const BusinessForm = () => {
   };
 
   //taking a new value to pass in submit function
+
+  // const handleEditSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   const editedFields = {
+  //     id: editStoreId,
+  //     name: editFormData.name,
+  //     url: editFormData.url,
+  //     location: editFormData.location,
+  //     capacity: editFormData.capacity,
+  //   };
+
+  //   const newFields = [...stores];
+
+  //   const index = stores.findIndex((store) => store.id === editStoreId);
+
+  //   newFields[index] = editedFields;
+  //   setStores(newFields);
+  //   setEditStoreId(null);
+  // };
+  // axios.put("http://localhost:3001/api/edit_settings", stores).then((res) => {
+  //   handleEditSubmit();
+  // });
+
   const editedFields = {
     id: editStoreId,
     name: editFormData.name,
@@ -61,10 +96,11 @@ const BusinessForm = () => {
     location: editFormData.location,
     capacity: editFormData.capacity,
   };
-  const handleEditSubmit = () => {
+  const handleEditSubmit = (event) => {
     axios
       .put("http://localhost:3001/api/edit_settings", editedFields)
       .then((response) => {
+        console.log(editedFields);
         setStores(
           stores.map((val) => {
             console.log(val);
@@ -79,6 +115,7 @@ const BusinessForm = () => {
               : val;
           })
         );
+        window.location = "/admin/settings";
       });
   };
 
