@@ -27,6 +27,7 @@ const move_upper_position = require("./routes/move_upper_position");
 const move_lower_position = require("./routes/move_lower_position");
 const new_session = require("./routes/new_session");
 const get_settings = require("./routes/get_settings");
+const edit_settings = require("./routes/edit_settings");
 const twilio = require("./routes/twilio");
 
 app.use("/api", complete_session(db));
@@ -36,6 +37,7 @@ app.use("/api", move_upper_position(db));
 app.use("/api", move_lower_position(db));
 app.use("/api", new_session(db));
 app.use("/api", get_settings(db));
+app.use("/api", edit_settings(db));
 app.use("/api", twilio());
 
 app.listen(port, () => {
