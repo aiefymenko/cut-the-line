@@ -10,10 +10,10 @@ import FeatureSection from "./FeatureSection/FeatureSection";
 import "./AdminApp.scss";
 
 //Font Awesome
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faClock, faGear } from "@fortawesome/free-solid-svg-icons";
+// import { library } from "@fortawesome/fontawesome-svg-core";
+// import { faClock, faGear } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faGear, faClock);
+// library.add(faGear, faClock);
 
 function App() {
   return (
