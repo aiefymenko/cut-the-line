@@ -1,16 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./Waitlist.scss";
-import Popup from "../UserDetails/Popup";
 import PopupEdit from "../UserDetails/PopupEdit";
+import PopupMove from "../UserDetails/PopupMove";
 
-
-export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClick, handleAdmitClick, editWaitlist }) {
+export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClick, handleAdmitClick, editWaitlist, updatePosition }) {
   const [showEdit, setShowEdit] = useState({ visible: false, sessionId: - 1 });
+  const [showMove, setShowMove] = useState({ visible: false, sessionId: - 1 });
+
   const handleCloseEdit = () => setShowEdit({ visible: false, sessionId: -1 });
   const handleShowEdit = (sessionId) => setShowEdit({ visible: true, sessionId: sessionId });
+
+  const handleCloseMove = () => setShowMove({ visible: false, sessionId: -1 });
+  const handleShowMove = (sessionId) => setShowMove({ visible: true, sessionId: sessionId });
+
+  const newWaitlist = [...waitlist].sort((a, b) => a.position - b.position);
 
   return (
 
@@ -18,6 +24,7 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
       <h3 className="title">Waitlist</h3>
       <div>
         {showEdit.visible && <PopupEdit editWaitlist={editWaitlist} handleClose={handleCloseEdit} sessionId={showEdit.sessionId} waitlist={waitlist} />}
+        {showMove.visible && <PopupMove updatePosition={updatePosition} handleClose={handleCloseMove} sessionId={showMove.sessionId} waitlist={waitlist} />}
       </div>
       <Table striped bordered hover>
         <thead>
@@ -32,7 +39,7 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
           </tr>
         </thead>
         <tbody>
-          {waitlist.map((session, i) => {
+          {newWaitlist.map((session, i) => {
             return (
               <tr key={i}>
                 <td>{session.id}</td>
@@ -41,6 +48,7 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
                 <td>{session.contact_number}</td>
                 <td>{session.group_size}</td>
                 <td>{session.wait_duration}</td>
+                <td>{session.position}</td>
                 <td className="icon">
                   <button className="button-solid" onClick={() => handleAdmitClick(session.id)}>
                     <i className="fa-solid fa-circle-check fa-2x check-icon"></i>
@@ -48,7 +56,7 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
                   <button className="button-solid" onClick={() => handleDeleteClick(session.id)}>
                     <i className="fa-solid fa-trash fa-2x no-show"></i>
                   </button>
-                  <button className="button-solid">
+                  <button className="button-solid" onClick={() => handleShowMove(session.id)}>
                     <i className="fa-solid fa-arrows-up-down fa-2x move"></i>
                   </button>
                   <button className="button-solid" onClick={() => handleShowEdit(session.id)}>
