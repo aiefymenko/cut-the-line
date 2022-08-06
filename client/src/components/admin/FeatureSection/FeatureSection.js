@@ -30,6 +30,48 @@ const FeatureSection = () => {
       })
   };
 
+  //Admit user
+const handleAdmitClick = (sessionId) => {
+  const newWaitlist = [...waitlist];
+  const index = waitlist.findIndex((session) => session.id === sessionId);
+  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
+  {
+    outcome_id: 4
+  })
+  .then(() => {
+    newWaitlist.splice(index, 1);
+    setWaitlist(newWaitlist)
+});
+}
+
+//Admin canceled session
+const handleDeleteClick = (sessionId) => {
+  const newWaitlist = [...waitlist];
+  const index = waitlist.findIndex((session) => session.id === sessionId);
+  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
+  {
+    outcome_id: 4
+  })
+  .then(() => {
+    newWaitlist.splice(index, 1);
+    setWaitlist(newWaitlist)
+});
+}
+
+//User didn't show up
+const handleNoShowClick = (sessionId) => {
+  const newWaitlist = [...waitlist];
+  const index = waitlist.findIndex((session) => session.id === sessionId);
+  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
+  {
+    outcome_id: 2
+  })
+  .then(() => {
+    newWaitlist.splice(index, 1);
+    setWaitlist(newWaitlist)
+});
+}
+
   const editWaitlist = (sessionId, firstName, lastName, phone, groupSize) => {
     const newWaitList = [...waitlist];
 
@@ -79,74 +121,74 @@ const FeatureSection = () => {
     setWaitlist(newWaitlist);
   };
 
-  const handleDeleteClick = (sessionId) => {
-    const newWaitlist = [...waitlist];
-    let oldPosition = -1;
+  // const handleDeleteClick = (sessionId) => {
+  //   const newWaitlist = [...waitlist];
+  //   let oldPosition = -1;
 
-    newWaitlist.forEach((session) => {
-      if (session.id === sessionId) {
-        oldPosition = session.position;
-      }
-    });
+  //   newWaitlist.forEach((session) => {
+  //     if (session.id === sessionId) {
+  //       oldPosition = session.position;
+  //     }
+  //   });
 
-    newWaitlist.forEach((session) => {
-      if (session.position > oldPosition) {
-        session.position--;
-      }
-    });
+  //   newWaitlist.forEach((session) => {
+  //     if (session.position > oldPosition) {
+  //       session.position--;
+  //     }
+  //   });
 
-    const index = waitlist.findIndex((session) => session.id === sessionId);
+  //   const index = waitlist.findIndex((session) => session.id === sessionId);
 
-    newWaitlist.splice(index, 1);
+  //   newWaitlist.splice(index, 1);
 
-    setWaitlist(newWaitlist);
-  }
+  //   setWaitlist(newWaitlist);
+  // }
 
-  const handleNoShowClick = (sessionId) => {
-    const newWaitlist = [...waitlist];
-    let oldPosition = -1;
+  // const handleNoShowClick = (sessionId) => {
+  //   const newWaitlist = [...waitlist];
+  //   let oldPosition = -1;
 
-    newWaitlist.forEach((session) => {
-      if (session.id === sessionId) {
-        oldPosition = session.position;
-      }
-    });
+  //   newWaitlist.forEach((session) => {
+  //     if (session.id === sessionId) {
+  //       oldPosition = session.position;
+  //     }
+  //   });
 
-    newWaitlist.forEach((session) => {
-      if (session.position > oldPosition) {
-        session.position--;
-      }
-    });
+  //   newWaitlist.forEach((session) => {
+  //     if (session.position > oldPosition) {
+  //       session.position--;
+  //     }
+  //   });
 
-    const index = waitlist.findIndex((session) => session.id === sessionId);
+  //   const index = waitlist.findIndex((session) => session.id === sessionId);
 
-    newWaitlist.splice(index, 1);
+  //   newWaitlist.splice(index, 1);
 
-    setWaitlist(newWaitlist);
-  }
+  //   setWaitlist(newWaitlist);
+  // }
 
-  const handleAdmitClick = (sessionId) => {
-    const newWaitlist = [...waitlist];
-    let oldPosition = -1;
+  // const handleAdmitClick = (sessionId) => {
+  //   const newWaitlist = [...waitlist];
+  //   let oldPosition = -1;
 
-    newWaitlist.forEach((session) => {
-      if (session.id === sessionId) {
-        oldPosition = session.position;
-      }
-    });
+  //   newWaitlist.forEach((session) => {
+  //     if (session.id === sessionId) {
+  //       oldPosition = session.position;
+  //     }
+  //   });
 
-    newWaitlist.forEach((session) => {
-      if (session.position > oldPosition) {
-        session.position--;
-      }
-    });
+  //   newWaitlist.forEach((session) => {
+  //     if (session.position > oldPosition) {
+  //       session.position--;
+  //     }
+  //   });
 
-    const index = waitlist.findIndex((session) => session.id === sessionId);
+  //   const index = waitlist.findIndex((session) => session.id === sessionId);
 
-    newWaitlist.splice(index, 1);
+  //   newWaitlist.splice(index, 1);
 
-    setWaitlist(newWaitlist);
-  }
+  //   setWaitlist(newWaitlist);
+  // }
 
   return (
     <>
