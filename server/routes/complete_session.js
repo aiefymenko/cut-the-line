@@ -8,7 +8,7 @@ module.exports = db => {
     UPDATE sessions
     SET date_end = CURRENT_TIMESTAMP,
       outcome_id = $1,
-      position = -1
+      position = 0
     WHERE id = $2
     `;
 
