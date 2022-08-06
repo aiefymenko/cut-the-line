@@ -37,7 +37,7 @@ const FeatureSection = () => {
           group_size: groupSize,
         })
         .then((response) => {
-          setWaitlist(...waitlist, response.data);
+          setWaitlist([...waitlist, response.data]);
       }) 
   };
 

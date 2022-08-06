@@ -24,8 +24,8 @@ module.exports = db => {
     db.query(queryString, values)
       .then((data) => {
         db.query(queryString1, [1, data.rows[0].id, 5, null])
-          .then(() => {
-            response.status(204).json({});
+          .then((res) => {
+            response.json({ ...res.rows[0], ...data.rows[0] });
           });
       })
       .catch(err => {
