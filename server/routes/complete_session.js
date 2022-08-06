@@ -20,8 +20,8 @@ module.exports = db => {
       })
       .catch(err => {
         response
-          .status(500)
-          .json({ error: err.message });
+          .status(500);
+        // .json({ error: err.message });
       });
 
     const queryString1 =
@@ -40,8 +40,8 @@ module.exports = db => {
       })
       .catch(err => {
         response
-          .status(500)
-          .json({ error: err.message });
+          .status(500);
+        // .json({ error: err.message });
       });
 
 
