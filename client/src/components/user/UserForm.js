@@ -16,7 +16,7 @@ const UserForm = () => {
           <FontAwesomeIcon icon="fa-solid fa-passport" />
         </h3>
       </div>
-      {/* <CreateUser /> */}
+      <CreateUser />
       <span>powered by</span>
       <div className="logo">
         <h3>Cut The Line</h3>
