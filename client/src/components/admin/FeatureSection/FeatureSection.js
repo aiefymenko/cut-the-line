@@ -9,11 +9,15 @@ import Waitlist from "./Pages/Waitlist";
 const FeatureSection = () => {
   const [waitlist, setWaitlist] = useState([]);
 
+  const helpRefresh = () => {
+      axios.get("http://localhost:3001/api/get_sessions").then((response) => {
+        setWaitlist(response.data);
+      });
+    };
+
   // GET sessions
   useEffect(() => {
-    axios.get("http://localhost:3001/api/get_sessions").then((response) => {
-      setWaitlist(response.data);
-    });
+  helpRefresh();
   }, []);
 
   //POST sessions
@@ -32,43 +36,40 @@ const FeatureSection = () => {
 
   //Admit user
 const handleAdmitClick = (sessionId) => {
-  const newWaitlist = [...waitlist];
   const index = waitlist.findIndex((session) => session.id === sessionId);
   axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
   {
-    outcome_id: 4
+    outcome_id: 4,
+    position: waitlist[index].position
   })
   .then(() => {
-    newWaitlist.splice(index, 1);
-    setWaitlist(newWaitlist)
+    helpRefresh();
 });
 }
 
 //Admin canceled session
 const handleDeleteClick = (sessionId) => {
-  const newWaitlist = [...waitlist];
   const index = waitlist.findIndex((session) => session.id === sessionId);
   axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
   {
-    outcome_id: 4
+    outcome_id: 4,
+    position: waitlist[index].position
   })
   .then(() => {
-    newWaitlist.splice(index, 1);
-    setWaitlist(newWaitlist)
+    helpRefresh();
 });
 }
 
 //User didn't show up
 const handleNoShowClick = (sessionId) => {
-  const newWaitlist = [...waitlist];
   const index = waitlist.findIndex((session) => session.id === sessionId);
   axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
   {
-    outcome_id: 2
+    outcome_id: 2,
+    position: waitlist[index].position
   })
   .then(() => {
-    newWaitlist.splice(index, 1);
-    setWaitlist(newWaitlist)
+    helpRefresh();
 });
 }
 
