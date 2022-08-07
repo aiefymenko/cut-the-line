@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import PhoneInput from "react-phone-number-input";
@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const UserFormList = () => {
+  let navigate = useNavigate();
   const [waitlist, setWaitlist] = useState([]);
   const [user, setUser] = useState({
     firstName: "",
@@ -40,8 +41,10 @@ const UserFormList = () => {
       });
   };
   const message = `Welcome ${user.firstName} you are now in line for Passport Service`;
-  const onSave = () => {
+  const onSave = (e) => {
+    e.preventDefault();
     addWaitlist(user.firstName, user.lastName, user.phone, user.groupSize);
+    navigate("/user/wait");
     axios
       .post("http://localhost:3001/api/messages", {
         to: `${user.phone}`,
@@ -106,16 +109,16 @@ const UserFormList = () => {
           <NavLink to="/user">
             <Button variant="secondary">Back</Button>
           </NavLink>
-          <Link to="/user/wait">
-            <Button
-              type="submit"
-              className="save"
-              variant="primary"
-              onClick={onSave}
-            >
-              Save Changes
-            </Button>
-          </Link>
+          {/* <Link to="/user/wait"> */}
+          <Button
+            type="submit"
+            className="save"
+            variant="primary"
+            onClick={onSave}
+          >
+            Save Changes
+          </Button>
+          {/* </Link> */}
         </span>
       </Form>
     </>
