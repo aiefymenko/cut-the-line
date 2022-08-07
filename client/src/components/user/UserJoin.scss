@@ -1,0 +1,42 @@
+.main-join{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-join {
+  height: 80%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    padding-bottom: 1rem;
+    color: #2f4050;
+  }
+
+  img {
+    width: 20rem;
+    height: 8rem;
+    margin-bottom: 3em;
+  }
+
+  h3 {
+    color: navy;
+  }
+
+  button {
+    margin-top: 2rem;
+  }
+}
+
+.site {
+  display: flex;
+
+  h3 {
+    padding-right: 1rem;
+  }
+}

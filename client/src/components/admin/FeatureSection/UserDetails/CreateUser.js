@@ -13,63 +13,61 @@ export default function CreateUser({ addWaitlist, handleClose }) {
     firstName: "",
     lastName: "",
     phone: "",
-    groupSize: ""
+    groupSize: "",
   });
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
     phone: "",
-    groupSize: ""
+    groupSize: "",
   });
 
   const handleChange = (e) => {
     if (e.target) {
-      const {name, value} = e.target;
-      setUser({...user, [name]:value})
+      const { name, value } = e.target;
+      setUser({ ...user, [name]: value });
       if (error[name]) {
-        setError({...error, [name]: ""})
+        setError({ ...error, [name]: "" });
       }
-    }
-    else {
-      setUser({...user, "phone":e})
+    } else {
+      setUser({ ...user, phone: e });
       if (error["phone"]) {
-        setError({...error, "phone": ""})
+        setError({ ...error, phone: "" });
       }
     }
-  }
+  };
 
   const message = `Welcome ${user.firstName} you are now in line for Passport Service`;
 
   const validate = () => {
     if (!user.firstName && !user.lastName && !user.phone && !user.groupSize) {
-      setError({...error, 
+      setError({
+        ...error,
         firstName: "Please enter your First Name",
         lastName: "Please enter your Last Name",
         phone: "Please enter your valid phone number",
-        groupSize: "Please enter your group size"
-      })
+        groupSize: "Please enter your group size",
+      });
       return false;
-    } else 
-    if (!user.firstName) {
-      setError({...error, lastName: "Please enter your First Name"})
+    } else if (!user.firstName) {
+      setError({ ...error, lastName: "Please enter your First Name" });
       return false;
     }
     if (!user.lastName) {
-      setError({...error, lastName: "Please enter your Last Name"})
+      setError({ ...error, lastName: "Please enter your Last Name" });
       return false;
-    } 
+    }
     if (!user.phone) {
-      setError({...error, phone: "Please enter your valid phone number"})
-      return false;
-    } 
-    if (!user.groupSize)  {
-      setError({...error, groupSize: "Please enter your group size"})
+      setError({ ...error, phone: "Please enter your valid phone number" });
       return false;
     }
-    else {
-        return true;
+    if (!user.groupSize) {
+      setError({ ...error, groupSize: "Please enter your group size" });
+      return false;
+    } else {
+      return true;
     }
-  }
+  };
 
   const onSave = (event) => {
     event.preventDefault();
@@ -85,14 +83,12 @@ export default function CreateUser({ addWaitlist, handleClose }) {
     handleClose();
   };
 
-
-
   return (
     <Form>
       <Form.Group className="mb-3" controlId="form-text">
         <Form.Label>First Name</Form.Label>
         <Form.Control
-          name = 'firstName'
+          name="firstName"
           value={user.firstName}
           onChange={handleChange}
           type="text"
@@ -104,10 +100,10 @@ export default function CreateUser({ addWaitlist, handleClose }) {
       <Form.Group className="mb-3" controlId="form-text">
         <Form.Label>Last Name</Form.Label>
         <Form.Control
-          name = 'lastName'
+          name="lastName"
           value={user.lastName}
           onChange={handleChange}
-          type="text" 
+          type="text"
           placeholder="Last Name"
         />
         <p>{error.lastName}</p>
@@ -116,7 +112,7 @@ export default function CreateUser({ addWaitlist, handleClose }) {
       <Form.Group className="mb-3" controlId="form-text">
         <Form.Label>Phone Number</Form.Label>
         <PhoneInput
-          name = 'phone'
+          name="phone"
           placeholder="Enter phone number"
           defaultCountry="CA"
           value={user.phone}
@@ -127,7 +123,7 @@ export default function CreateUser({ addWaitlist, handleClose }) {
       <Form.Label>Group Size</Form.Label>
       <Form.Group className="mb-3" controlId="form-text">
         <Form.Select
-          name = "groupSize"
+          name="groupSize"
           aria-label="Floating label select example"
           value={user.groupSize}
           onChange={handleChange}
@@ -145,6 +141,7 @@ export default function CreateUser({ addWaitlist, handleClose }) {
         <Button variant="secondary" onClick={handleClose}>
           Back
         </Button>
+
         <Button type="submit" variant="primary" onClick={onSave}>
           Save Changes
         </Button>

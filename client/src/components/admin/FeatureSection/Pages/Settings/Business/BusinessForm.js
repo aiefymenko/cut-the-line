@@ -5,6 +5,8 @@ import EditBusinessForm from "./EditBusinessForm";
 //BootStrap
 import Form from "react-bootstrap/Form";
 import BusinessReadOnly from "./BusinessReadOnly";
+//scss
+import "./BusinessForm.scss";
 
 const BusinessForm = () => {
   const [validated, setValidated] = useState(false);
