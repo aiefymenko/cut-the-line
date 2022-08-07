@@ -28,3 +28,18 @@ background: none;
 .button-solid:active {
   transform: translateY(4px);
 }
+
+.active-sessions {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background-color: #2f4050;
+    border: none;
+  }
+
+  button:hover {
+    background-color: #04AA6D;
+  }
+}

@@ -186,7 +186,7 @@ const FeatureSection = () => {
 
   return (
     <>
-      <Header addWaitlist={addWaitlist} />
+      <Header addWaitlist={addWaitlist} helpRefresh={helpRefresh} />
       <Routes>
         <Route path="settings" element={<Setting />} />
         <Route

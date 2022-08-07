@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 import ReactTooltip from "react-tooltip";
 
 import PopupEdit from "../UserDetails/PopupEdit";
@@ -10,7 +11,7 @@ import "font-awesome/css/font-awesome.min.css";
 import "./Waitlist.scss";
 
 
-export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClick, handleAdmitClick, editWaitlist, updatePosition }) {
+export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClick, handleAdmitClick, editWaitlist, updatePosition, helpRefresh }) {
   const [showEdit, setShowEdit] = useState({ visible: false, sessionId: - 1 });
   const [showMove, setShowMove] = useState({ visible: false, sessionId: - 1 });
 
@@ -25,7 +26,12 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
   return (
 
     <div>
+      <div className="active-sessions">
       <h3 className="title">Active Sessions</h3>
+      <Button className="create" variant="primary" onClick={helpRefresh}>
+          Update Waitlist
+        </Button>
+        </div>
       <div>
         {showEdit.visible && <PopupEdit editWaitlist={editWaitlist} handleClose={handleCloseEdit} sessionId={showEdit.sessionId} waitlist={waitlist} />}
         {showMove.visible && <PopupMove updatePosition={updatePosition} handleClose={handleCloseMove} sessionId={showMove.sessionId} waitlist={waitlist} />}
