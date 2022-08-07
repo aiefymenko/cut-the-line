@@ -17,5 +17,8 @@ INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, po
 INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 4, 5, CURRENT_TIMESTAMP - (80 * interval '1 minute'), null, 2);
 INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 2, 5, CURRENT_TIMESTAMP - (70 * interval '1 minute'), null, 3);
 INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 3, 5, CURRENT_TIMESTAMP - (60 * interval '1 minute'), null, 4);
+INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 3, 1, CURRENT_TIMESTAMP - (120 * interval '1 minute'), CURRENT_TIMESTAMP - (100 * interval '1 minute'), 0);
+INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 3, 2, CURRENT_TIMESTAMP - (110 * interval '1 minute'), CURRENT_TIMESTAMP - (90 * interval '1 minute'), 0);
+INSERT INTO sessions (waitlist_id, user_id, outcome_id, date_start, date_end, position) VALUES (1, 3, 1, CURRENT_TIMESTAMP - (100 * interval '1 minute'), CURRENT_TIMESTAMP - (80 * interval '1 minute'), 0);
 
 
