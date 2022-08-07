@@ -28,4 +28,4 @@ module.exports = (db) => {
 
 // request call:
 // GET - localhost:3001/api/get_estimated_wait_time
-// Note: Remember to use it to multiple user's group size
+// Note: Average wait time is calculated based on admitted sessions only. Estimated wait time is calculated by Average wait time * number of waiting sessions.
