@@ -81,7 +81,7 @@ const FeatureSection = () => {
     const index = waitlist.findIndex((session) => session.id === sessionId);
     axios
       .post(`http://localhost:3001/api/complete_session/${sessionId}`, {
-        outcome_id: 1,
+        outcome_id: 4,
         position: waitlist[index].position,
       })
       .then(() => {
@@ -109,7 +109,7 @@ const FeatureSection = () => {
     const index = waitlist.findIndex((session) => session.id === sessionId);
     axios
       .post(`http://localhost:3001/api/complete_session/${sessionId}`, {
-        outcome_id: 1,
+        outcome_id: 2,
         position: waitlist[index].position,
       })
       .then(() => {
