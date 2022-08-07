@@ -10,15 +10,15 @@ const FeatureSection = () => {
   const [waitlist, setWaitlist] = useState([]);
 
   const helpRefresh = () => {
-      axios.get("http://localhost:3001/api/get_sessions").then((response) => {
-        setWaitlist(response.data);
-      });
-    };
+    axios.get("http://localhost:3001/api/get_sessions").then((response) => {
+      setWaitlist(response.data);
+    });
+  };
 
   // GET sessions
   useEffect(() => {
-  helpRefresh();
-  }, []);
+    helpRefresh();
+  }, [waitlist]);
 
   //POST sessions
   const addWaitlist = (firstName, lastName, phone, groupSize) => {
@@ -35,43 +35,43 @@ const FeatureSection = () => {
   };
 
   //Admit user
-const handleAdmitClick = (sessionId) => {
-  const index = waitlist.findIndex((session) => session.id === sessionId);
-  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
-  {
-    outcome_id: 4,
-    position: waitlist[index].position
-  })
-  .then(() => {
-    helpRefresh();
-});
-}
+  const handleAdmitClick = (sessionId) => {
+    const index = waitlist.findIndex((session) => session.id === sessionId);
+    axios
+      .post(`http://localhost:3001/api/complete_session/${sessionId}`, {
+        outcome_id: 4,
+        position: waitlist[index].position,
+      })
+      .then(() => {
+        helpRefresh();
+      });
+  };
 
-//Admin canceled session
-const handleDeleteClick = (sessionId) => {
-  const index = waitlist.findIndex((session) => session.id === sessionId);
-  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
-  {
-    outcome_id: 4,
-    position: waitlist[index].position
-  })
-  .then(() => {
-    helpRefresh();
-});
-}
+  //Admin canceled session
+  const handleDeleteClick = (sessionId) => {
+    const index = waitlist.findIndex((session) => session.id === sessionId);
+    axios
+      .post(`http://localhost:3001/api/complete_session/${sessionId}`, {
+        outcome_id: 4,
+        position: waitlist[index].position,
+      })
+      .then(() => {
+        helpRefresh();
+      });
+  };
 
-//User didn't show up
-const handleNoShowClick = (sessionId) => {
-  const index = waitlist.findIndex((session) => session.id === sessionId);
-  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
-  {
-    outcome_id: 2,
-    position: waitlist[index].position
-  })
-  .then(() => {
-    helpRefresh();
-});
-}
+  //User didn't show up
+  const handleNoShowClick = (sessionId) => {
+    const index = waitlist.findIndex((session) => session.id === sessionId);
+    axios
+      .post(`http://localhost:3001/api/complete_session/${sessionId}`, {
+        outcome_id: 2,
+        position: waitlist[index].position,
+      })
+      .then(() => {
+        helpRefresh();
+      });
+  };
 
   const editWaitlist = (sessionId, firstName, lastName, phone, groupSize) => {
     const newWaitList = [...waitlist];
