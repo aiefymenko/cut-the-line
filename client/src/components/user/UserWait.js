@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../images/logo.jpeg";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import "./UserWait.scss";
+import ConfirmModal from "./ConfirmModal";
 
 const UserWait = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div className="main-wait">
       <div className="user-wait">
@@ -21,7 +26,15 @@ const UserWait = () => {
         <h4>
           Estimated wait time is: <span>90 mins</span>
         </h4>
-        <Button variant="danger">Cancel</Button>
+        <Button variant="danger" onClick={handleShow}>
+          Cancel
+        </Button>
+        <ConfirmModal
+          show={show}
+          setShow={setShow}
+          handleClose={handleClose}
+          handleShow={handleShow}
+        />
       </div>
       <div className="powered-by">
         <span>powered by</span>

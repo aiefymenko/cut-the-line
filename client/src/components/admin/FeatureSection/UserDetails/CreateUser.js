@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useLocation, NavLink } from "react-router-dom";
 import axios from "axios";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -10,7 +9,6 @@ import Button from "react-bootstrap/Button";
 import "./CreateUser.scss";
 
 export default function CreateUser({ addWaitlist, handleClose }) {
-  const location = useLocation();
   const [error, setError] = useState({
     firstName: "",
     lastName: "",
@@ -140,29 +138,13 @@ export default function CreateUser({ addWaitlist, handleClose }) {
         <p>{error.groupSize}</p>
       </Form.Group>
       <span className="user-buttons">
-        {location.pathname.includes("admin") ? (
-          <Button variant="secondary" onClick={handleClose}>
-            Back
-          </Button>
-        ) : (
-          <NavLink to="/user">
-            <Button variant="secondary" onClick={handleClose}>
-              Back
-            </Button>
-          </NavLink>
-        )}
-        {location.pathname.includes("admin") ? (
-          <Button type="submit" variant="primary" onClick={onSave}>
-            Save Changes
-          </Button>
-        ) : (
-          <NavLink to="/user/wait">
-            <Button type="submit" variant="primary">
-              {/*add back to get working  onClick={onSave} */}
-              Save Changes
-            </Button>
-          </NavLink>
-        )}
+        <Button variant="secondary" onClick={handleClose}>
+          Back
+        </Button>
+
+        <Button type="submit" variant="primary" onClick={onSave}>
+          Save Changes
+        </Button>
       </span>
     </Form>
   );

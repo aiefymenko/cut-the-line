@@ -14,12 +14,12 @@ const FeatureSection = () => {
     axios.get("http://localhost:3001/api/get_sessions").then((response) => {
       setWaitlist(response.data);
     });
-  }, []);
+  }, [waitlist]);
 
   //POST sessions
   const addWaitlist = (firstName, lastName, phone, groupSize) => {
-    axios.post("http://localhost:3001/api/new_session",
-      {
+    axios
+      .post("http://localhost:3001/api/new_session", {
         first_name: firstName,
         last_name: lastName,
         contact_number: phone,
@@ -27,7 +27,7 @@ const FeatureSection = () => {
       })
       .then((response) => {
         setWaitlist([...waitlist, response.data]);
-      })
+      });
   };
 
   const editWaitlist = (sessionId, firstName, lastName, phone, groupSize) => {
@@ -57,14 +57,21 @@ const FeatureSection = () => {
 
     if (newPosition < oldPosition) {
       newWaitlist.forEach((session) => {
-        if (session.id !== sessionId && session.position >= newPosition && session.position < oldPosition) {
+        if (
+          session.id !== sessionId &&
+          session.position >= newPosition &&
+          session.position < oldPosition
+        ) {
           session.position++;
         }
       });
-    }
-    else {
+    } else {
       newWaitlist.forEach((session) => {
-        if (session.id !== sessionId && session.position > oldPosition && session.position <= newPosition) {
+        if (
+          session.id !== sessionId &&
+          session.position > oldPosition &&
+          session.position <= newPosition
+        ) {
           session.position--;
         }
       });
@@ -100,7 +107,7 @@ const FeatureSection = () => {
     newWaitlist.splice(index, 1);
 
     setWaitlist(newWaitlist);
-  }
+  };
 
   const handleNoShowClick = (sessionId) => {
     const newWaitlist = [...waitlist];
@@ -123,7 +130,7 @@ const FeatureSection = () => {
     newWaitlist.splice(index, 1);
 
     setWaitlist(newWaitlist);
-  }
+  };
 
   const handleAdmitClick = (sessionId) => {
     const newWaitlist = [...waitlist];
@@ -146,14 +153,26 @@ const FeatureSection = () => {
     newWaitlist.splice(index, 1);
 
     setWaitlist(newWaitlist);
-  }
+  };
 
   return (
     <>
       <Header addWaitlist={addWaitlist} />
       <Routes>
         <Route path="settings" element={<Setting />} />
-        <Route path="waitlist" element={<Waitlist waitlist={waitlist} handleDeleteClick={handleDeleteClick} handleNoShowClick={handleNoShowClick} handleAdmitClick={handleAdmitClick} editWaitlist={editWaitlist} updatePosition={updatePosition} />} />
+        <Route
+          path="waitlist"
+          element={
+            <Waitlist
+              waitlist={waitlist}
+              handleDeleteClick={handleDeleteClick}
+              handleNoShowClick={handleNoShowClick}
+              handleAdmitClick={handleAdmitClick}
+              editWaitlist={editWaitlist}
+              updatePosition={updatePosition}
+            />
+          }
+        />
       </Routes>
     </>
   );

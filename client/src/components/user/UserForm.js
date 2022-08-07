@@ -1,7 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import UserFormList from "./UserFormList";
 
-import CreateUser from "../admin/FeatureSection/UserDetails/CreateUser";
 import logo from "../../images/logo.jpeg";
 //Scss and font-awesome
 import "./UserForm.scss";
@@ -16,7 +15,7 @@ const UserForm = () => {
           <FontAwesomeIcon icon="fa-solid fa-passport" />
         </h3>
       </div>
-      <CreateUser />
+      <UserFormList />
       <span>powered by</span>
       <div className="logo">
         <h3>Cut The Line</h3>

@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 import logo from "../../images/logo.jpeg";
 import "./UserJoin.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "react-bootstrap/Button";
 
-const userJoin = () => {
+const UserJoin = () => {
   return (
     <div className="main-join">
       <div className="user-join">
@@ -26,4 +26,4 @@ const userJoin = () => {
   );
 };
 
-export default userJoin;
+export default UserJoin;

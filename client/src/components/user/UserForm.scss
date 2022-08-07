@@ -10,12 +10,14 @@
     height: 75%;
     width: 50%;
 
-    button:first-of-type {
+    button {
       background-color: #6c757d;
     }
-    button:last-of-type {
+
+    .save{
       background-color: #0d6efd;
     }
+   
 
     .user-buttons {
       display: flex;
