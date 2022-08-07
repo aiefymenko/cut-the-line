@@ -42,6 +42,7 @@ export default function EditUser({ editWaitlist, handleClose, session, sessionId
       <Form.Label>Group Size</Form.Label>
       <Form.Group className="mb-3" controlId="form-text">
         <Form.Select aria-label="Floating label select example" value={groupSize} onChange={e => setGroupSize(e.target.value)}>
+          <option value="">Group size </option>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>

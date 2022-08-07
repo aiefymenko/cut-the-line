@@ -130,7 +130,17 @@ const FeatureSection = () => {
       }
     });
 
-    setWaitlist(newWaitList);
+    axios
+    .post(`http://localhost:3001/api/edit_user/${sessionId}`, {
+      first_name: firstName,
+      last_name: lastName,
+      contact_number: phone,
+      group_size: groupSize
+    })
+    .then(() => {
+      setWaitlist(newWaitList);
+    });
+    
   };
 
   const updatePosition = (sessionId, newPosition) => {
