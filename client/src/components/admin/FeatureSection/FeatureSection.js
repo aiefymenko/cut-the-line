@@ -10,20 +10,20 @@ const FeatureSection = () => {
   const [waitlist, setWaitlist] = useState([]);
 
   const helpRefresh = () => {
-      axios.get("http://localhost:3001/api/get_sessions").then((response) => {
-        setWaitlist(response.data);
-      });
-    };
+    axios.get("http://localhost:3001/api/get_sessions").then((response) => {
+      setWaitlist(response.data);
+    });
+  };
 
   // GET sessions
   useEffect(() => {
-  helpRefresh();
+    helpRefresh();
   }, []);
 
   //POST sessions
   const addWaitlist = (firstName, lastName, phone, groupSize) => {
-    axios.post("http://localhost:3001/api/new_session",
-      {
+    axios
+      .post("http://localhost:3001/api/new_session", {
         first_name: firstName,
         last_name: lastName,
         contact_number: phone,
@@ -31,47 +31,92 @@ const FeatureSection = () => {
       })
       .then((response) => {
         setWaitlist([...waitlist, response.data]);
-      })
+      });
   };
 
   //Admit user
-const handleAdmitClick = (sessionId) => {
-  const index = waitlist.findIndex((session) => session.id === sessionId);
-  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
-  {
-    outcome_id: 4,
-    position: waitlist[index].position
-  })
-  .then(() => {
-    helpRefresh();
-});
-}
+  const handleAdmitClick = (sessionId) => {
+    const newWaitlist = [...waitlist];
+    let oldPosition = -1;
 
-//Admin canceled session
-const handleDeleteClick = (sessionId) => {
-  const index = waitlist.findIndex((session) => session.id === sessionId);
-  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
-  {
-    outcome_id: 4,
-    position: waitlist[index].position
-  })
-  .then(() => {
-    helpRefresh();
-});
-}
+    newWaitlist.forEach((session) => {
+      if (session.id === sessionId) {
+        oldPosition = session.position;
+      }
+    });
 
-//User didn't show up
-const handleNoShowClick = (sessionId) => {
-  const index = waitlist.findIndex((session) => session.id === sessionId);
-  axios.post(`http://localhost:3001/api/complete_session/${sessionId}`, 
-  {
-    outcome_id: 2,
-    position: waitlist[index].position
-  })
-  .then(() => {
-    helpRefresh();
-});
-}
+    newWaitlist.forEach((session) => {
+      if (session.position > oldPosition) {
+        session.position--;
+      }
+    });
+    const index = waitlist.findIndex((session) => session.id === sessionId);
+    axios
+      .post(`http://localhost:3001/api/complete_session/${sessionId}`, {
+        outcome_id: 1,
+        position: waitlist[index].position,
+      })
+      .then(() => {
+        newWaitlist.splice(index, 1);
+        setWaitlist(newWaitlist);
+      });
+  };
+
+  //Admin canceled session
+  const handleDeleteClick = (sessionId) => {
+    const newWaitlist = [...waitlist];
+    let oldPosition = -1;
+
+    newWaitlist.forEach((session) => {
+      if (session.id === sessionId) {
+        oldPosition = session.position;
+      }
+    });
+
+    newWaitlist.forEach((session) => {
+      if (session.position > oldPosition) {
+        session.position--;
+      }
+    });
+    const index = waitlist.findIndex((session) => session.id === sessionId);
+    axios
+      .post(`http://localhost:3001/api/complete_session/${sessionId}`, {
+        outcome_id: 1,
+        position: waitlist[index].position,
+      })
+      .then(() => {
+        newWaitlist.splice(index, 1);
+        setWaitlist(newWaitlist);
+      });
+  };
+
+  //User didn't show up
+  const handleNoShowClick = (sessionId) => {
+    const newWaitlist = [...waitlist];
+    let oldPosition = -1;
+
+    newWaitlist.forEach((session) => {
+      if (session.id === sessionId) {
+        oldPosition = session.position;
+      }
+    });
+
+    newWaitlist.forEach((session) => {
+      if (session.position > oldPosition) {
+        session.position--;
+      }
+    });
+    const index = waitlist.findIndex((session) => session.id === sessionId);
+    axios
+      .post(`http://localhost:3001/api/complete_session/${sessionId}`, {
+        outcome_id: 1,
+        position: waitlist[index].position,
+      })
+      .then(() => {
+        newWaitlist.splice(index, 1);
+        setWaitlist(newWaitlist);
+      });
+  };
 
   const editWaitlist = (sessionId, firstName, lastName, phone, groupSize) => {
     const newWaitList = [...waitlist];
@@ -100,14 +145,21 @@ const handleNoShowClick = (sessionId) => {
 
     if (newPosition < oldPosition) {
       newWaitlist.forEach((session) => {
-        if (session.id !== sessionId && session.position >= newPosition && session.position < oldPosition) {
+        if (
+          session.id !== sessionId &&
+          session.position >= newPosition &&
+          session.position < oldPosition
+        ) {
           session.position++;
         }
       });
-    }
-    else {
+    } else {
       newWaitlist.forEach((session) => {
-        if (session.id !== sessionId && session.position > oldPosition && session.position <= newPosition) {
+        if (
+          session.id !== sessionId &&
+          session.position > oldPosition &&
+          session.position <= newPosition
+        ) {
           session.position--;
         }
       });
@@ -122,81 +174,24 @@ const handleNoShowClick = (sessionId) => {
     setWaitlist(newWaitlist);
   };
 
-  // const handleDeleteClick = (sessionId) => {
-  //   const newWaitlist = [...waitlist];
-  //   let oldPosition = -1;
-
-  //   newWaitlist.forEach((session) => {
-  //     if (session.id === sessionId) {
-  //       oldPosition = session.position;
-  //     }
-  //   });
-
-  //   newWaitlist.forEach((session) => {
-  //     if (session.position > oldPosition) {
-  //       session.position--;
-  //     }
-  //   });
-
-  //   const index = waitlist.findIndex((session) => session.id === sessionId);
-
-  //   newWaitlist.splice(index, 1);
-
-  //   setWaitlist(newWaitlist);
-  // }
-
-  // const handleNoShowClick = (sessionId) => {
-  //   const newWaitlist = [...waitlist];
-  //   let oldPosition = -1;
-
-  //   newWaitlist.forEach((session) => {
-  //     if (session.id === sessionId) {
-  //       oldPosition = session.position;
-  //     }
-  //   });
-
-  //   newWaitlist.forEach((session) => {
-  //     if (session.position > oldPosition) {
-  //       session.position--;
-  //     }
-  //   });
-
-  //   const index = waitlist.findIndex((session) => session.id === sessionId);
-
-  //   newWaitlist.splice(index, 1);
-
-  //   setWaitlist(newWaitlist);
-  // }
-
-  // const handleAdmitClick = (sessionId) => {
-  //   const newWaitlist = [...waitlist];
-  //   let oldPosition = -1;
-
-  //   newWaitlist.forEach((session) => {
-  //     if (session.id === sessionId) {
-  //       oldPosition = session.position;
-  //     }
-  //   });
-
-  //   newWaitlist.forEach((session) => {
-  //     if (session.position > oldPosition) {
-  //       session.position--;
-  //     }
-  //   });
-
-  //   const index = waitlist.findIndex((session) => session.id === sessionId);
-
-  //   newWaitlist.splice(index, 1);
-
-  //   setWaitlist(newWaitlist);
-  // }
-
   return (
     <>
       <Header addWaitlist={addWaitlist} />
       <Routes>
         <Route path="settings" element={<Setting />} />
-        <Route path="waitlist" element={<Waitlist waitlist={waitlist} handleDeleteClick={handleDeleteClick} handleNoShowClick={handleNoShowClick} handleAdmitClick={handleAdmitClick} editWaitlist={editWaitlist} updatePosition={updatePosition} />} />
+        <Route
+          path="waitlist"
+          element={
+            <Waitlist
+              waitlist={waitlist}
+              handleDeleteClick={handleDeleteClick}
+              handleNoShowClick={handleNoShowClick}
+              handleAdmitClick={handleAdmitClick}
+              editWaitlist={editWaitlist}
+              updatePosition={updatePosition}
+            />
+          }
+        />
       </Routes>
     </>
   );
