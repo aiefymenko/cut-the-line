@@ -30,6 +30,7 @@ const new_session = require("./routes/new_session");
 const get_settings = require("./routes/get_settings");
 const edit_settings = require("./routes/edit_settings");
 const twilio = require("./routes/twilio");
+const estimated_wait_time = require("./routes/get_estimated_wait_time");
 
 app.use("/api", complete_session(db));
 app.use("/api", edit_user(db));
@@ -40,6 +41,7 @@ app.use("/api", new_session(db));
 app.use("/api", get_settings(db));
 app.use("/api", edit_settings(db));
 app.use("/api", twilio());
+app.use("/api", estimated_wait_time(db));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
