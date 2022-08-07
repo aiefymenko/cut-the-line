@@ -21,7 +21,7 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
   return (
 
     <div>
-      <h3 className="title">Waitlist</h3>
+      <h3 className="title">Active Sessions</h3>
       <div>
         {showEdit.visible && <PopupEdit editWaitlist={editWaitlist} handleClose={handleCloseEdit} sessionId={showEdit.sessionId} waitlist={waitlist} />}
         {showMove.visible && <PopupMove updatePosition={updatePosition} handleClose={handleCloseMove} sessionId={showMove.sessionId} waitlist={waitlist} />}
@@ -34,7 +34,7 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
             <th>Last Name</th>
             <th>Phone Number</th>
             <th>Group Size</th>
-            <th>Wait Time</th>
+            <th>Wait Time (in min)</th>
             <th></th>
           </tr>
         </thead>
