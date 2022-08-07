@@ -8,41 +8,40 @@ module.exports = db => {
     UPDATE sessions
     SET date_end = CURRENT_TIMESTAMP,
       outcome_id = $1,
-      position = -1
+      position = 0
     WHERE id = $2
     `;
 
+
     const values = [request.body.outcome_id, request.params.id];
+
+    const queryString1 =
+    `
+    UPDATE sessions
+    SET position = position - 1
+    WHERE position > $1
+  `;
+
+    const values1 = [request.body.position];
 
     db.query(queryString, values)
       .then(() => {
-        response.status(204).json({});
+        return db.query(queryString1, values1);
       })
-      .catch(err => {
-        response
-          .status(500)
-          .json({ error: err.message });
-      });
-
-    const queryString1 =
-      `
-      UPDATE sessions
-      SET position = position - 1
-      WHERE position > $1
-    `;
-
-    const values1 = [request.params.id];
-
-    db.query(queryString1, values1)
       .then(() => {
         response.status(204).json({});
-
       })
       .catch(err => {
         response
           .status(500)
           .json({ error: err.message });
       });
+
+
+
+   
+
+    
 
 
   });

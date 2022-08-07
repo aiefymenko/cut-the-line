@@ -39,9 +39,9 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
           </tr>
         </thead>
         <tbody>
-          {newWaitlist.map((session, i) => {
+          {newWaitlist.map((session) => {
             return (
-              <tr key={i}>
+              <tr key={session.id}>
                 <td>{session.id}</td>
                 <td>{session.first_name}</td>
                 <td>{session.last_name}</td>
