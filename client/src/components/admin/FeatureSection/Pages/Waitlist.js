@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
+import ReactTooltip from "react-tooltip";
+
+import PopupEdit from "../UserDetails/PopupEdit";
+import PopupMove from "../UserDetails/PopupMove";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./Waitlist.scss";
-import PopupEdit from "../UserDetails/PopupEdit";
-import PopupMove from "../UserDetails/PopupMove";
+
 
 export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClick, handleAdmitClick, editWaitlist, updatePosition }) {
   const [showEdit, setShowEdit] = useState({ visible: false, sessionId: - 1 });
@@ -50,21 +54,36 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
                 <td>{session.wait_duration}</td>
                 <td>{session.position}</td>
                 <td className="icon">
-                  <button className="button-solid" onClick={() => handleAdmitClick(session.id)}>
+                  <button className="button-solid" onClick={() => handleAdmitClick(session.id)} data-tip data-for="AdmitToolTip">
                     <i className="fa-solid fa-circle-check fa-2x check-icon"></i>
                   </button>
-                  <button className="button-solid" onClick={() => handleDeleteClick(session.id)}>
+                  <ReactTooltip id="AdmitToolTip" place="top" effect="solid">
+                    Admit
+                  </ReactTooltip>
+                  <button className="button-solid" onClick={() => handleDeleteClick(session.id)} data-tip data-for="RemoveToolTip">
                     <i className="fa-solid fa-trash fa-2x no-show"></i>
                   </button>
-                  <button className="button-solid" onClick={() => handleShowMove(session.id)}>
+                  <ReactTooltip id="RemoveToolTip" place="top" effect="solid">
+                    Remove
+                  </ReactTooltip>
+                  <button className="button-solid" onClick={() => handleShowMove(session.id)} data-tip data-for="MovePositionToolTip">
                     <i className="fa-solid fa-arrows-up-down fa-2x move"></i>
                   </button>
-                  <button className="button-solid" onClick={() => handleShowEdit(session.id)}>
+                  <ReactTooltip id="MovePositionToolTip" place="top" effect="solid">
+                    Move Position
+                  </ReactTooltip>
+                  <button className="button-solid" onClick={() => handleShowEdit(session.id)} data-tip data-for="EditUserToolTip">
                     <i className="fa-solid fa-user-pen fa-2x update"></i>
                   </button>
-                  <button className="button-solid" onClick={() => handleNoShowClick(session.id)}>
+                  <ReactTooltip id="EditUserToolTip" place="top" effect="solid">
+                    Edit User
+                  </ReactTooltip>
+                  <button className="button-solid" onClick={() => handleNoShowClick(session.id)} data-tip data-for="NoShowToolTip">
                     <i className="fa-solid fa-ghost fa-2x no-show"></i>
                   </button>
+                  <ReactTooltip id="NoShowToolTip" place="top" effect="solid">
+                    No Show
+                  </ReactTooltip>
                 </td>
               </tr>
             );
