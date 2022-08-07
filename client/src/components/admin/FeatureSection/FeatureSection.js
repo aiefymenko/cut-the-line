@@ -18,7 +18,7 @@ const FeatureSection = () => {
   // GET sessions
   useEffect(() => {
     helpRefresh();
-  }, [helpRefresh]);
+  }, []);
 
   //POST sessions
   const addWaitlist = (firstName, lastName, phone, groupSize) => {
