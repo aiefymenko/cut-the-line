@@ -19,7 +19,10 @@ const UserJoin = () => {
           </h3>
         </div>
         <NavLink to="form">
-          <Button variant="primary">Join Waitlist</Button>
+          <Button variant="primary">
+            <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
+            &nbsp;Join Waitlist
+          </Button>
         </NavLink>
       </div>
     </div>
