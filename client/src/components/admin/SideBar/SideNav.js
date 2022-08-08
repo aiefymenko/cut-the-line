@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SideNavItems from "./SideNavItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

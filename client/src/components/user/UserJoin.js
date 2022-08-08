@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const UserJoin = () => {
     <div className="main-join">
       <div className="user-join">
         <h1>Cut The Line</h1>
-        <img src={logo} />
+        <img alt="logo" src={logo} />
         <div className="site">
           <h3>Passport Service</h3>
           <h3>

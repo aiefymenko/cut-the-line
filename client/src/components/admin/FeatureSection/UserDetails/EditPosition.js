@@ -13,12 +13,6 @@ export default function EditPosition({ updatePosition, handleClose, session, ses
     handleClose();
   }
 
-  const maxLengthCheck = (object) => {
-    if (object.value.length > object.maxLength)
-      object.value = object.value.slice(0, object.maxLength)
-
-  }
-
   return (
     <Form>
       <Form.Group className="mb-3" controlId="form-text">

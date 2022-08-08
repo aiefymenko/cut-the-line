@@ -14,7 +14,7 @@ const Header = ({ addWaitlist }) => {
   return (
     <>
       <div className="header">
-        <img src={logo} />
+        <img alt="logo" src={logo} />
         <h1>Cut The Line</h1>
         <Button className="create" variant="primary" onClick={handleShow}>
           <i className="fa-solid fa-user-plus"></i>

@@ -95,7 +95,7 @@ const UserWait = () => {
         <span>powered by</span>
         <div className="our-logo">
           <h5>Cut The Line</h5>
-          <img src={logo} />
+          <img alt="logo" src={logo} />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -40,7 +40,16 @@ const UserFormList = () => {
         console.log(response.data);
         setWaitlist([...waitlist, response.data]);
         // eslint-disable-next-line no-undef
+<<<<<<< HEAD
+        navigate(`/user/wait/${response.data.position}`, {
+          state: {
+            firstName: response.data.first_name,
+            position: response.data.position
+          }
+        });
+=======
         navigate(`/user/wait/${response.data.id}`, {state: response.data});
+>>>>>>> 2792060e1b04d8d8b705618df9c7188669281737
 
       });
   };
