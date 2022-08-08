@@ -40,10 +40,7 @@ const UserFormList = () => {
         console.log(response.data);
         setWaitlist([...waitlist, response.data]);
         // eslint-disable-next-line no-undef
-        navigate(`/user/wait/${response.data.position}`, {state: {
-          firstName: response.data.first_name,
-          position: response.data.position
-        }});
+        navigate(`/user/wait/${response.data.id}`, {state: response.data});
 
       });
   };

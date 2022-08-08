@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const router = require("express").Router();
 
 module.exports = (db) => {
@@ -15,6 +13,7 @@ module.exports = (db) => {
       AND sessions.outcome_id = 1
       `
     )
+      // eslint-disable-next-line camelcase
       .then(({ rows: wait_time }) => {
         response.json(wait_time);
       })

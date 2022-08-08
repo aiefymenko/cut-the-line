@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../images/logo.jpeg";
@@ -8,12 +9,42 @@ import ConfirmModal from "./ConfirmModal";
 
 const UserWait = () => {
   const [show, setShow] = useState(false);
+  const [waittime, setWaittime] = useState([{
+    estimated_wait_time: ""
+  }]);
+  const [position, setPosition] = useState(null);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const { state } = useLocation();
 
-  console.log(state);
+  // console.log(state);
+
+  //get wait time
+  const waitTime = () => {
+    axios.get("http://localhost:3001/api/get_estimated_wait_time").then((response) => {
+      setWaittime(response.data);
+    });
+  };
+
+  useEffect(() => {
+    waitTime();
+  }, []) ;
+
+    //get particular session
+    const session = () => {
+      axios.get(`http://localhost:3001/api/get_position/${state.id}`).then((response) => {
+        // console.log('My position...............', response.data.position);
+        setPosition(response.data.position);
+      });
+    };
+
+  useEffect(() => {
+    session();
+  });
+
+  // console.log('New wait time',waittime);
+
 
   return (
     <div className="main-wait">
@@ -24,17 +55,23 @@ const UserWait = () => {
             <FontAwesomeIcon icon="fa-solid fa-passport" />
           </h1>
         </div>
-        <h2>Welcome {state.firstName}</h2>
+        <h2>Welcome {state.first_name}</h2>
         <h4>
-          Your are number <span>{state.position}</span> in line
+          Your are number <span>{position}</span> in line
         </h4>
         <h4>
-          Estimated wait time is: <span>90 mins</span>
+          Estimated wait time is: <span>{waittime[0].estimated_wait_time} min</span>
         </h4>
+        <div className="user-buttons">
         <Button variant="danger" onClick={handleShow}>
-          <i class="fa-solid fa-user-slash"></i>
+          <i className="fa-solid fa-user-slash"></i>
           &nbsp;Cancel Registration
         </Button>
+        <Button className="create" variant="primary" onClick={() => { waitTime(); session();}}>
+          <i className="fa-solid fa-rotate"></i>
+          &nbsp;Refresh
+        </Button>
+        </div>
         <ConfirmModal
           show={show}
           setShow={setShow}
