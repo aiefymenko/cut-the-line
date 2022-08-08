@@ -45,6 +45,17 @@ const UserWait = () => {
 
   // console.log('New wait time',waittime);
 
+  //cancel appointment
+  const handleDeleteClick = () => {
+    axios
+    .post(`http://localhost:3001/api/complete_session/${state.id}`, {
+      outcome_id: 3,
+      position: position,
+    })
+    .then(() => {
+    });
+};
+
 
   return (
     <div className="main-wait">
@@ -77,6 +88,7 @@ const UserWait = () => {
           setShow={setShow}
           handleClose={handleClose}
           handleShow={handleShow}
+          handleDeleteClick={handleDeleteClick}
         />
       </div>
       <div className="powered-by">
