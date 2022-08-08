@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../images/logo.jpeg";
 import { Button } from "react-bootstrap";
@@ -11,7 +11,7 @@ const UserWait = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const {state} = useLocation();
+  const { state } = useLocation();
 
   console.log(state);
 
@@ -32,7 +32,8 @@ const UserWait = () => {
           Estimated wait time is: <span>90 mins</span>
         </h4>
         <Button variant="danger" onClick={handleShow}>
-          Cancel
+          <i class="fa-solid fa-user-slash"></i>
+          &nbsp;Cancel Registration
         </Button>
         <ConfirmModal
           show={show}

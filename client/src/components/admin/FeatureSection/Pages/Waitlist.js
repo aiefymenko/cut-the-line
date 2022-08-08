@@ -27,11 +27,12 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
 
     <div>
       <div className="active-sessions">
-      <h3 className="title">Active Sessions</h3>
-      <Button className="create" variant="primary" onClick={helpRefresh}>
-          Update Waitlist
+        <h3 className="title">Active Sessions</h3>
+        <Button className="create" variant="primary" onClick={helpRefresh}>
+          <i class="fa-solid fa-rotate"></i>
+          &nbsp;Refresh
         </Button>
-        </div>
+      </div>
       <div>
         {showEdit.visible && <PopupEdit editWaitlist={editWaitlist} handleClose={handleCloseEdit} sessionId={showEdit.sessionId} waitlist={waitlist} />}
         {showMove.visible && <PopupMove updatePosition={updatePosition} handleClose={handleCloseMove} sessionId={showMove.sessionId} waitlist={waitlist} />}

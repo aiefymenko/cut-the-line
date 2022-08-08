@@ -7,7 +7,7 @@ const ConfirmModal = ({ show, handleClose }) => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body className="modalBody">
-          ARE YOU SURE YOU WANT TO Cancel?
+          Are you sure you want to cancel?
         </Modal.Body>
         <Modal.Footer className="modalFooter">
           <Button variant="secondary" onClick={handleClose}>
