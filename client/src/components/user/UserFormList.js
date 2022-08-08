@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const UserFormList = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [waitlist, setWaitlist] = useState([]);
   const [user, setUser] = useState({
     firstName: "",
@@ -37,14 +37,20 @@ const UserFormList = () => {
         group_size: groupSize,
       })
       .then((response) => {
+        console.log(response.data);
         setWaitlist([...waitlist, response.data]);
+        // eslint-disable-next-line no-undef
+        navigate(`/user/wait/${response.data.position}`, {state: {
+          firstName: response.data.first_name,
+          position: response.data.position
+        }});
+
       });
   };
   const message = `Welcome ${user.firstName} you are now in line for Passport Service`;
   const onSave = (e) => {
     e.preventDefault();
     addWaitlist(user.firstName, user.lastName, user.phone, user.groupSize);
-    navigate("/user/wait");
     axios
       .post("http://localhost:3001/api/messages", {
         to: `${user.phone}`,

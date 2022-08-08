@@ -37,7 +37,7 @@ function App() {
         <Route path="/admin/*" element={<AdminApp />} />
         <Route path="/user" element={<UserJoin />} />
         <Route path="/user/form" element={<UserForm />} />
-        <Route path="/user/wait" element={<UserWait />} />
+        <Route path="/user/wait/:position" element={<UserWait />} />
       </Routes>
     </div>
   );

@@ -186,13 +186,14 @@ const FeatureSection = () => {
 
   return (
     <>
-      <Header addWaitlist={addWaitlist} helpRefresh={helpRefresh} />
+      <Header addWaitlist={addWaitlist}  />
       <Routes>
         <Route path="settings" element={<Setting />} />
         <Route
           path="waitlist"
           element={
             <Waitlist
+              helpRefresh={helpRefresh}
               waitlist={waitlist}
               handleDeleteClick={handleDeleteClick}
               handleNoShowClick={handleNoShowClick}

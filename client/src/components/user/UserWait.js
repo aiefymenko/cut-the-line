@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useLocation} from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../images/logo.jpeg";
 import { Button } from "react-bootstrap";
@@ -10,6 +11,10 @@ const UserWait = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const {state} = useLocation();
+
+  console.log(state);
+
   return (
     <div className="main-wait">
       <div className="user-wait">
@@ -19,9 +24,9 @@ const UserWait = () => {
             <FontAwesomeIcon icon="fa-solid fa-passport" />
           </h1>
         </div>
-        <h2>Welcome Mike</h2>
+        <h2>Welcome {state.firstName}</h2>
         <h4>
-          Your are number <span>#7</span> in line
+          Your are number <span>{state.position}</span> in line
         </h4>
         <h4>
           Estimated wait time is: <span>90 mins</span>
