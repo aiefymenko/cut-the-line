@@ -19,7 +19,7 @@ const UserForm = () => {
       <span>powered by</span>
       <div className="logo">
         <h3>Cut The Line</h3>
-        <img src={logo} />
+        <img alt="logo" src={logo} />
       </div>
     </div>
   );

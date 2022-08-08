@@ -32,7 +32,7 @@ const UserWait = () => {
           Estimated wait time is: <span>90 mins</span>
         </h4>
         <Button variant="danger" onClick={handleShow}>
-          <i class="fa-solid fa-user-slash"></i>
+          <i className="fa-solid fa-user-slash"></i>
           &nbsp;Cancel Registration
         </Button>
         <ConfirmModal
@@ -46,7 +46,7 @@ const UserWait = () => {
         <span>powered by</span>
         <div className="our-logo">
           <h5>Cut The Line</h5>
-          <img src={logo} />
+          <img alt="logo" src={logo} />
         </div>
       </div>
     </div>

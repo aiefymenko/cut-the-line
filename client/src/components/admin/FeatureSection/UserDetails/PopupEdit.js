@@ -7,7 +7,7 @@ import "./Popup.scss";
 export default function PopupEdit({ handleClose, editWaitlist, sessionId, waitlist }) {
 
   const index = waitlist.findIndex((session) => session.id === sessionId);
-  const [session, setSession] = useState(waitlist[index]);
+  const [session] = useState(waitlist[index]);
 
   return (
     <Modal show={true} onHide={handleClose}>

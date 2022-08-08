@@ -1,7 +1,3 @@
-import { useState, useEffect } from "react";
-import Axios from "axios";
-import { Routes, Route } from "react-router-dom";
-
 //Files
 import SideNav from "./SideBar/SideNav";
 import FeatureSection from "./FeatureSection/FeatureSection";

@@ -9,7 +9,6 @@ import BusinessReadOnly from "./BusinessReadOnly";
 import "./BusinessForm.scss";
 
 const BusinessForm = () => {
-  const [validated, setValidated] = useState(false);
 
   //states
   const [stores, setStores] = useState([]);
@@ -73,12 +72,12 @@ const BusinessForm = () => {
           stores.map((val) => {
             return val
               ? {
-                  id: val.id,
-                  name: val.name,
-                  url: val.url,
-                  location: val.location,
-                  capacity: val.capacity,
-                }
+                id: val.id,
+                name: val.name,
+                url: val.url,
+                location: val.location,
+                capacity: val.capacity,
+              }
               : val;
           })
         );
