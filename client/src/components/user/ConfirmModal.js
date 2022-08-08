@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-const ConfirmModal = ({ show, handleClose }) => {
+const ConfirmModal = ({ show, handleClose, handleDeleteClick }) => {
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -14,7 +14,7 @@ const ConfirmModal = ({ show, handleClose }) => {
             Back
           </Button>
           <NavLink to="/user">
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={handleDeleteClick}>
               Confirm
             </Button>
           </NavLink>

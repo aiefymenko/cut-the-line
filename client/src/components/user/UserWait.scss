@@ -89,3 +89,11 @@
 //   border-bottom: none;
 //  }
 // }
+
+.user-buttons{
+  display: flex;  
+
+  button {
+    margin: 40px;
+  }
+}

@@ -29,7 +29,7 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
       <div className="active-sessions">
         <h3 className="title">Active Sessions</h3>
         <Button className="create" variant="primary" onClick={helpRefresh}>
-          <i class="fa-solid fa-rotate"></i>
+          <i className="fa-solid fa-rotate"></i>
           &nbsp;Refresh
         </Button>
       </div>
