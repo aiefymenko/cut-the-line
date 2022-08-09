@@ -57,8 +57,8 @@ const BusinessForm = () => {
   return (
     <div className="b-info">
       <h4>Business Info</h4>
-      <Form>
-        {stores.map((store) => (
+      {stores.map((store, index) => (
+        <Form key={store.id}>
           <>
             {showEdit ? (
               <EditBusinessForm
@@ -67,11 +67,15 @@ const BusinessForm = () => {
                 editedStores={editedStores}
               />
             ) : (
-              <BusinessReadOnly store={store} clickEdit={clickEdit} />
+              <BusinessReadOnly
+                key={index}
+                store={store}
+                clickEdit={clickEdit}
+              />
             )}
           </>
-        ))}
-      </Form>
+        </Form>
+      ))}
     </div>
   );
 };
