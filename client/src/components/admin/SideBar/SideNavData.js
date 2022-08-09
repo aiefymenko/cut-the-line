@@ -13,11 +13,11 @@ const SideNavData = [
     link: "settings",
   },
 
-  // {
-  //   title: "History",
-  //   icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
-  //   link: "/history",
-  // },
+  {
+    title: "History",
+    icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
+    link: "history",
+  },
 ];
 
 export default SideNavData;

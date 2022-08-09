@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "./Header/Header";
 import Setting from "./Pages/Settings/Settings";
 import Waitlist from "./Pages/Waitlist";
+import History from "./Pages/History";
 
 const FeatureSection = () => {
   const [waitlist, setWaitlist] = useState([]);
@@ -131,16 +132,15 @@ const FeatureSection = () => {
     });
 
     axios
-    .post(`http://localhost:3001/api/edit_user/${sessionId}`, {
-      first_name: firstName,
-      last_name: lastName,
-      contact_number: phone,
-      group_size: groupSize
-    })
-    .then(() => {
-      setWaitlist(newWaitList);
-    });
-    
+      .post(`http://localhost:3001/api/edit_user/${sessionId}`, {
+        first_name: firstName,
+        last_name: lastName,
+        contact_number: phone,
+        group_size: groupSize,
+      })
+      .then(() => {
+        setWaitlist(newWaitList);
+      });
   };
 
   const updatePosition = (sessionId, newPosition) => {
@@ -186,7 +186,7 @@ const FeatureSection = () => {
 
   return (
     <>
-      <Header addWaitlist={addWaitlist}  />
+      <Header addWaitlist={addWaitlist} />
       <Routes>
         <Route path="settings" element={<Setting />} />
         <Route
@@ -203,6 +203,7 @@ const FeatureSection = () => {
             />
           }
         />
+        <Route path="history" element={<History />} />
       </Routes>
     </>
   );

@@ -68,8 +68,8 @@ const HoursForm = () => {
       <h4>Hours</h4>
       <form onSubmit={handleEditSubmit}>
         <table>
-          <tbody>
-            {hours.map((hour) => (
+          {hours.map((hour) => (
+            <tbody key={hour.id}>
               <>
                 {editHourId === hour.id ? (
                   <EditableHours
@@ -82,8 +82,8 @@ const HoursForm = () => {
                   <ReadOnly hour={hour} handleEditClick={handleEditClick} />
                 )}
               </>
-            ))}
-          </tbody>
+            </tbody>
+          ))}
         </table>
       </form>
     </div>
