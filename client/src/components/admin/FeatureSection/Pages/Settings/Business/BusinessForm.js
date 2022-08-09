@@ -11,17 +11,13 @@ import "./BusinessForm.scss";
 const BusinessForm = () => {
   //states
   const [stores, setStores] = useState([]);
-
   const [showEdit, SetShowEdit] = useState(false);
-  const [showRead, SetShowRead] = useState(true);
 
   const clickEdit = () => {
     SetShowEdit(true);
-    SetShowRead(false);
   };
 
   const clickRead = () => {
-    SetShowRead(true);
     SetShowEdit(false);
   };
 
