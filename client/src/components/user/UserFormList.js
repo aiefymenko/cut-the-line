@@ -18,12 +18,55 @@ const UserFormList = () => {
     groupSize: "",
   });
 
+  const [error, setError] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    groupSize: "",
+  });
+
   const handleChange = (e) => {
     if (e.target) {
       const { name, value } = e.target;
       setUser({ ...user, [name]: value });
+      if (error[name]) {
+        setError({ ...error, [name]: "" });
+      }
     } else {
       setUser({ ...user, phone: e });
+      if (error["phone"]) {
+        setError({ ...error, phone: "" });
+      }
+    }
+  };
+
+  const validate = () => {
+    if (!user.firstName && !user.lastName && !user.phone && !user.groupSize) {
+      setError({
+        ...error,
+        firstName: "Please enter your First Name",
+        lastName: "Please enter your Last Name",
+        phone: "Please enter your valid phone number",
+        groupSize: "Please enter your group size",
+      });
+      return false;
+    } else if (!user.firstName) {
+      setError({ ...error, lastName: "Please enter your First Name" });
+      return false;
+    }
+    if (!user.lastName) {
+      setError({ ...error, lastName: "Please enter your Last Name" });
+      return false;
+    }
+    if (!user.phone) {
+      setError({ ...error, phone: "Please enter your valid phone number" });
+      return false;
+    }
+    if (!user.groupSize) {
+      setError({ ...error, groupSize: "Please enter your group size" });
+      return false;
+    } else {
+      return true;
     }
   };
 
@@ -37,15 +80,14 @@ const UserFormList = () => {
         group_size: groupSize,
       })
       .then((response) => {
-        console.log(response.data);
         setWaitlist([...waitlist, response.data]);
-
         navigate(`/user/wait/${response.data.id}`, { state: response.data });
       });
   };
   const message = `Welcome ${user.firstName} you are now in line for Passport Service`;
   const onSave = (e) => {
     e.preventDefault();
+    if (!validate()) return false;
     addWaitlist(user.firstName, user.lastName, user.phone, user.groupSize);
     axios
       .post("http://localhost:3001/api/messages", {
@@ -68,6 +110,7 @@ const UserFormList = () => {
             type="text"
             placeholder="Enter your First Name"
           />
+          <p>{error.firstName}</p>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="form-text">
@@ -79,6 +122,7 @@ const UserFormList = () => {
             type="text"
             placeholder="Last Name"
           />
+          <p>{error.lastName}</p>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="form-text">
@@ -90,6 +134,7 @@ const UserFormList = () => {
             defaultCountry="CA"
             value={user.phone}
           />
+          <p>{error.phone}</p>
         </Form.Group>
         <Form.Label>Group Size</Form.Label>
         <Form.Group className="mb-3" controlId="form-text">
@@ -106,12 +151,12 @@ const UserFormList = () => {
             <option value="4">Four</option>
             <option value="5">Five</option>
           </Form.Select>
+          <p>{error.groupSize}</p>
         </Form.Group>
         <span className="user-buttons">
           <NavLink to="/user">
             <Button variant="secondary">Back</Button>
           </NavLink>
-          {/* <Link to="/user/wait"> */}
           <Button
             type="submit"
             className="save"
@@ -120,7 +165,6 @@ const UserFormList = () => {
           >
             Save Changes
           </Button>
-          {/* </Link> */}
         </span>
       </Form>
     </>
