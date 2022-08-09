@@ -6,6 +6,11 @@
   align-content: space-between;
   background-color: #2f4050;
   padding: 40px 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 15%;
 
   .title-links {
     width: 100%;

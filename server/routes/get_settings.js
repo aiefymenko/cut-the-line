@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const router = require("express").Router();
 
 module.exports = (db) => {
@@ -14,6 +12,24 @@ module.exports = (db) => {
         LOCATION
       FROM settings
       `
+    )
+      .then(({ rows: settings }) => {
+        response.json(settings);
+      })
+      .catch((err) => {
+        response.status(500).json({ error: err.message });
+      });
+  });
+
+  router.get("/get_settings/:id", (request, response) => {
+    const { id } = request.params;
+    db.query(
+      `
+      SELECT *
+      FROM settings
+      WHERE id = $1
+      `,
+      [id]
     )
       .then(({ rows: settings }) => {
         response.json(settings);

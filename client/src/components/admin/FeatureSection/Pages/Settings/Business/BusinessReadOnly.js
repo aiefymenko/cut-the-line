@@ -4,7 +4,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const BusinessReadOnly = ({ store, handleEditClick }) => {
+const BusinessReadOnly = ({ store, clickEdit }) => {
   return (
     <>
       <Form.Group className="mb-3">
@@ -23,11 +23,7 @@ const BusinessReadOnly = ({ store, handleEditClick }) => {
         <Form.Label>Capacity</Form.Label>
         <p>{store.capacity}</p>
       </Form.Group>
-      <button
-        className="edit"
-        type="button"
-        onClick={(event) => handleEditClick(event, store)}
-      >
+      <button className="edit" type="button" onClick={clickEdit}>
         <span>
           <FontAwesomeIcon icon="fa-solid fa-user-pen" />
         </span>

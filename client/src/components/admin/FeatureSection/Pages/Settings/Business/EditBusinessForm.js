@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 //bootstrap fontawesome
 import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const EditBusinessForm = ({
-  handleEditFormChange,
-  editFormData,
-  handleCancelClick,
-}) => {
+const EditBusinessForm = ({ clickRead, store, editedStores }) => {
+  const [storeName, setStoreName] = useState(store.name);
+  const [storeUrl, setStoreUrl] = useState(store.url);
+  const [storeLocation, setStoreLocation] = useState(store.location);
+  const [storeCapacity, setStoreCapacity] = useState(store.capacity);
+
+  const onSave = (event) => {
+    event.preventDefault();
+    editedStores(storeName, storeUrl, storeLocation, storeCapacity);
+    clickRead();
+  };
   return (
     <>
       <Form.Group className="mb-3">
@@ -18,8 +24,8 @@ const EditBusinessForm = ({
           name="name"
           type="text"
           placeholder="Company Name"
-          value={editFormData.name}
-          onChange={handleEditFormChange}
+          value={storeName}
+          onChange={(e) => setStoreName(e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3">
@@ -32,8 +38,8 @@ const EditBusinessForm = ({
           name="url"
           type="text"
           placeholder="google.com"
-          value={editFormData.url}
-          onChange={handleEditFormChange}
+          value={storeUrl}
+          onChange={(e) => setStoreUrl(e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3">
@@ -43,8 +49,8 @@ const EditBusinessForm = ({
           name="location"
           type="text"
           placeholder="Enter City, Prov, Country"
-          value={editFormData.location}
-          onChange={handleEditFormChange}
+          value={storeLocation}
+          onChange={(e) => setStoreLocation(e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3">
@@ -55,16 +61,16 @@ const EditBusinessForm = ({
           type="number"
           className="number-edit"
           placeholder="Enter Capacity"
-          value={editFormData.capacity}
-          onChange={handleEditFormChange}
+          value={storeCapacity}
+          onChange={(e) => setStoreCapacity(e.target.value)}
         />
       </Form.Group>
-      <button type="submit" className="submit">
+      <button type="submit" className="submit" onClick={onSave}>
         <span>
           <FontAwesomeIcon icon="fa-solid fa-circle-check" />
         </span>
       </button>
-      <button type="button" className="cancel-edit" onClick={handleCancelClick}>
+      <button type="button" className="cancel-edit" onClick={clickRead}>
         <span>
           <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
         </span>

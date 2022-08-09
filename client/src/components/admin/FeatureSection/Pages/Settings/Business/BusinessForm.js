@@ -9,16 +9,21 @@ import BusinessReadOnly from "./BusinessReadOnly";
 import "./BusinessForm.scss";
 
 const BusinessForm = () => {
-
   //states
   const [stores, setStores] = useState([]);
-  const [editStoreId, setEditStoreId] = useState(null);
-  const [editFormData, setEditFormData] = useState({
-    name: "",
-    url: "",
-    location: "",
-    capacity: null,
-  });
+
+  const [showEdit, SetShowEdit] = useState(false);
+  const [showRead, SetShowRead] = useState(true);
+
+  const clickEdit = () => {
+    SetShowEdit(true);
+    SetShowRead(false);
+  };
+
+  const clickRead = () => {
+    SetShowRead(true);
+    SetShowEdit(false);
+  };
 
   //load original data
   useEffect(() => {
@@ -27,86 +32,42 @@ const BusinessForm = () => {
       .then((res) => setStores(res.data));
   }, []);
 
-  //edit functions
-  // When clicking edit button renders editpage
-  const handleEditClick = (event, store) => {
-    event.preventDefault();
-    setEditStoreId(store.id);
+  const editedStores = (storeName, storeUrl, storeLocation, storeCapacity) => {
+    const newStore = [...stores];
 
-    const formValues = {
-      name: store.name,
-      url: store.url,
-      location: store.location,
-      capacity: store.capacity,
-    };
+    newStore.forEach((session) => {
+      session.name = storeName;
+      session.url = storeUrl;
+      session.location = storeLocation;
+      session.capacity = storeCapacity;
+    });
 
-    setEditFormData(formValues);
-  };
-
-  //handles onchange event on form in edit page
-  const handleEditFormChange = (event) => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...editFormData };
-    newFormData[fieldName] = fieldValue;
-
-    setEditFormData(newFormData);
-  };
-
-  const editedFields = {
-    id: editStoreId,
-    name: editFormData.name,
-    url: editFormData.url,
-    location: editFormData.location,
-    capacity: editFormData.capacity,
-  };
-  const handleEditSubmit = (event) => {
     axios
-      .put("http://localhost:3001/api/edit_settings", editedFields)
-      .then((response) => {
-        console.log(editedFields);
-        setStores(
-          stores.map((val) => {
-            return val
-              ? {
-                id: val.id,
-                name: val.name,
-                url: val.url,
-                location: val.location,
-                capacity: val.capacity,
-              }
-              : val;
-          })
-        );
-        window.location = "/admin/settings";
+      .put(`http://localhost:3001/api/edit_settings`, {
+        name: storeName,
+        url: storeUrl,
+        location: storeLocation,
+        capacity: storeCapacity,
+      })
+      .then(() => {
+        setStores(newStore);
       });
-  };
-
-  const handleCancelClick = () => {
-    setEditStoreId(null);
   };
 
   return (
     <div className="b-info">
       <h4>Business Info</h4>
-      <Form onSubmit={handleEditSubmit}>
+      <Form>
         {stores.map((store) => (
           <>
-            {editStoreId === store.id ? (
+            {showEdit ? (
               <EditBusinessForm
                 store={store}
-                editFormData={editFormData}
-                handleEditFormChange={handleEditFormChange}
-                handleCancelClick={handleCancelClick}
+                clickRead={clickRead}
+                editedStores={editedStores}
               />
             ) : (
-              <BusinessReadOnly
-                store={store}
-                handleEditClick={handleEditClick}
-              />
+              <BusinessReadOnly store={store} clickEdit={clickEdit} />
             )}
           </>
         ))}

@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const router = require("express").Router();
 
 module.exports = (db) => {
@@ -10,14 +8,12 @@ module.exports = (db) => {
       url = $2,
       capacity = $3,
       location = $4
-      WHERE id = $5
     `;
     const values = [
       request.body.name,
       request.body.url,
       request.body.capacity,
       request.body.location,
-      request.body.id,
     ];
 
     db.query(queryString, values)
