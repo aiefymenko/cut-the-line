@@ -29,15 +29,15 @@ const UserWait = () => {
 
   useEffect(() => {
     waitTime();
-  }, []) ;
+  }, []);
 
-    //get particular session
-    const session = () => {
-      axios.get(`http://localhost:3001/api/get_position/${state.id}`).then((response) => {
-        // console.log('My position...............', response.data.position);
-        setPosition(response.data.position);
-      });
-    };
+  //get particular session
+  const session = () => {
+    axios.get(`http://localhost:3001/api/get_position/${state.id}`).then((response) => {
+      // console.log('My position...............', response.data.position);
+      setPosition(response.data.position);
+    });
+  };
 
   useEffect(() => {
     session();
@@ -48,13 +48,13 @@ const UserWait = () => {
   //cancel appointment
   const handleDeleteClick = () => {
     axios
-    .post(`http://localhost:3001/api/complete_session/${state.id}`, {
-      outcome_id: 3,
-      position: position,
-    })
-    .then(() => {
-    });
-};
+      .post(`http://localhost:3001/api/complete_session/${state.id}`, {
+        outcome_id: 3,
+        position: position,
+      })
+      .then(() => {
+      });
+  };
 
 
   return (
@@ -71,17 +71,19 @@ const UserWait = () => {
           Your are number <span>{position}</span> in line
         </h4>
         <h4>
-          Estimated wait time is: <span>{waittime[0].estimated_wait_time} min</span>
+          Estimated Wait Time:&nbsp;
+          <i class="fa-solid fa-clock"></i>
+          <span>&nbsp;{waittime[0].estimated_wait_time} mins</span>
         </h4>
         <div className="user-buttons">
-        <Button variant="danger" onClick={handleShow}>
-          <i className="fa-solid fa-user-slash"></i>
-          &nbsp;Cancel Registration
-        </Button>
-        <Button className="create" variant="primary" onClick={() => { waitTime(); session();}}>
-          <i className="fa-solid fa-rotate"></i>
-          &nbsp;Refresh
-        </Button>
+          <Button variant="danger" onClick={handleShow}>
+            <i className="fa-solid fa-user-slash"></i>
+            &nbsp;Cancel Registration
+          </Button>
+          <Button className="create" variant="primary" onClick={() => { waitTime(); session(); }}>
+            <i className="fa-solid fa-rotate"></i>
+            &nbsp;Refresh
+          </Button>
         </div>
         <ConfirmModal
           show={show}

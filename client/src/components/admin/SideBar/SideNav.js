@@ -18,7 +18,10 @@ export default function SideNav() {
           <SideNavItems />
         </ul>
       </div>
-      <p>ADMIN</p>
+      <p>
+        <i className="fa-solid fa-user-gear"></i>
+        ADMIN
+      </p>
     </nav>
   );
 }
