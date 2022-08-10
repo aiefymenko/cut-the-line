@@ -146,6 +146,7 @@ const FeatureSection = () => {
   const updatePosition = (sessionId, newPosition) => {
     const newWaitlist = [...waitlist];
     let oldPosition = -1;
+    let lowerPosition = true;
 
     newWaitlist.forEach((session) => {
       if (session.id === sessionId) {
@@ -154,6 +155,7 @@ const FeatureSection = () => {
     });
 
     if (newPosition < oldPosition) {
+      lowerPosition = false;
       newWaitlist.forEach((session) => {
         if (
           session.id !== sessionId &&
@@ -181,7 +183,26 @@ const FeatureSection = () => {
       }
     });
 
-    setWaitlist(newWaitlist);
+    if (lowerPosition) {
+      axios
+        .post(`http://localhost:3001/api/move_lower_position/${sessionId}`, {
+          old_position: { oldPosition },
+          new_position: { newPosition }
+        })
+        .then(() => {
+          setWaitlist(newWaitlist);
+        });
+    }
+    else {
+      axios
+        .post(`http://localhost:3001/api/move_upper_position/${sessionId}`, {
+          old_position: { oldPosition },
+          new_position: { newPosition }
+        })
+        .then(() => {
+          setWaitlist(newWaitlist);
+        });
+    }
   };
 
   return (

@@ -13,26 +13,24 @@ module.exports = db => {
 
     db.query(queryString, values)
       .then(() => {
-        response.status(204).json({});
-      })
-      .catch(err => {
-        response
-          .status(500)
-          .json({ error: err.message });
-      });
+        const queryString1 =
+          `
+        UPDATE sessions
+        SET position = $1
+        WHERE id = $2
+      `;
+        const values1 = [request.body.new_position, request.params.session_id];
 
-    const queryString1 =
-      `
-      UPDATE sessions
-      SET position = $1
-      WHERE id = $2
-    `;
+        db.query(queryString1, values1)
+          .then(() => {
+            response.status(204).json({});
 
-    const values1 = [request.body.new_position, request.params.session_id];
-
-    db.query(queryString1, values1)
-      .then(() => {
-        response.status(204).json({});
+          })
+          .catch(err => {
+            response
+              .status(500)
+              .json({ error: err.message });
+          });
 
       })
       .catch(err => {
@@ -40,6 +38,7 @@ module.exports = db => {
           .status(500)
           .json({ error: err.message });
       });
+
   });
 
   return router;

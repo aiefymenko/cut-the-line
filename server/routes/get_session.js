@@ -2,8 +2,6 @@ const router = require("express").Router();
 
 module.exports = db => {
   router.get("/get_session/:id", (request, response) => {
-
-    console.log("hihi");
     const queryString =
       `
     SELECT users.first_name, users.last_name, users.group_size, users.contact_number, sessions.id,
