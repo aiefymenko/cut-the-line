@@ -17,6 +17,8 @@ import {
   faUserPen,
   faCircleXmark,
   faPassport,
+  faGhost,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -25,7 +27,9 @@ library.add(
   faUserPen,
   faCircleCheck,
   faCircleXmark,
-  faPassport
+  faPassport,
+  faGhost,
+  faTrash
 );
 
 function App() {
