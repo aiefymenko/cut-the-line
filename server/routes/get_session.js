@@ -33,4 +33,4 @@ module.exports = db => {
 
 
 // request call:
-// GET - localhost:3001/api/get_sessions
+// GET - localhost:3001/api/get_session/1
