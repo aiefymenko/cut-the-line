@@ -13,13 +13,13 @@ export default function CreateUser({ addWaitlist, handleClose }) {
     firstName: "",
     lastName: "",
     phone: "",
-    groupSize: "",
+    groupSize: ""
   });
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
     phone: "",
-    groupSize: "",
+    groupSize: ""
   });
 
   const handleChange = (e) => {

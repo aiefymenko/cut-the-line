@@ -28,10 +28,11 @@ const FeatureSection = () => {
         first_name: firstName,
         last_name: lastName,
         contact_number: phone,
-        group_size: groupSize,
+        group_size: groupSize
       })
       .then((response) => {
         setWaitlist([...waitlist, response.data]);
+        helpRefresh();
       });
   };
 

@@ -32,7 +32,6 @@ const edit_settings = require("./routes/edit_settings");
 const twilio = require("./routes/twilio");
 const estimated_wait_time = require("./routes/get_estimated_wait_time");
 const get_position = require("./routes/get_position");
-const get_session = require("./routes/get_session");
 const get_outcomes = require("./routes/get_outcomes");
 
 app.use("/api", complete_session(db));
@@ -46,7 +45,6 @@ app.use("/api", edit_settings(db));
 app.use("/api", twilio());
 app.use("/api", estimated_wait_time(db));
 app.use("/api", get_position(db));
-app.use("/api", get_session(db));
 app.use("/api", get_outcomes(db));
 
 app.listen(port, () => {
