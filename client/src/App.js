@@ -19,6 +19,7 @@ import {
   faPassport,
   faGhost,
   faTrash,
+  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -29,7 +30,8 @@ library.add(
   faCircleXmark,
   faPassport,
   faGhost,
-  faTrash
+  faTrash,
+  faChartLine
 );
 
 function App() {
