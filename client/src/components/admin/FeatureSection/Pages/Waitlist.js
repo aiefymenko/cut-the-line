@@ -53,13 +53,12 @@ export default function Waitlist({ waitlist, handleDeleteClick, handleNoShowClic
           {newWaitlist.map((session) => {
             return (
               <tr key={session.id}>
-                <td>{session.id}</td>
+                <td>{session.position}</td>
                 <td>{session.first_name}</td>
                 <td>{session.last_name}</td>
                 <td>{session.contact_number}</td>
                 <td>{session.group_size}</td>
                 <td>{session.wait_duration}</td>
-                <td>{session.position}</td>
                 <td className="icon">
                   <button className="button-solid" onClick={() => handleAdmitClick(session.id)} data-tip data-for="AdmitToolTip">
                     <i className="fa-solid fa-circle-check fa-2x check-icon"></i>

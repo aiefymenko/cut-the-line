@@ -72,7 +72,7 @@ const UserWait = () => {
         </h4>
         <h4>
           Estimated Wait Time:&nbsp;
-          <i class="fa-solid fa-clock"></i>
+          <i className="fa-solid fa-clock"></i>
           <span>&nbsp;{waittime[0].estimated_wait_time} mins</span>
         </h4>
         <div className="user-buttons">
