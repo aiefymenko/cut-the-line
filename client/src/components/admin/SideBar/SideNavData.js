@@ -12,10 +12,10 @@ const SideNavData = [
     icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
     link: "settings",
   },
-  
-  { 
-    title: "History",
-    icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
+
+  {
+    title: "Analytics",
+    icon: <FontAwesomeIcon icon="fa-solid fa-chart-line" />,
     link: "history",
   },
 ];
